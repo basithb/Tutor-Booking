@@ -1,0 +1,17 @@
+const express = require("express");
+const app = express();
+const cors = require("cors");
+
+// Middleware
+app.use(express.json()); // Request data from client side
+app.use(cors());
+
+// Routes
+
+app.listen(5000, () => {
+    console.log("Server is running on Port 5000");
+});
+
+
+
+

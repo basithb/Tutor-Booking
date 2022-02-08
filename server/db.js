@@ -1,4 +1,4 @@
-const Pool = require("pg").Pool;
+const Pool = require("pg").Pool; // Pool property helps to configure our connection
 
 const pool = new Pool({
   host: "localhost",

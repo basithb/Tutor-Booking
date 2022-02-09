@@ -17,10 +17,11 @@ module.exports = async (req, res, next) => {
     const payload = jwt.verify(jwtToken, process.env.jwtSecret) // this verify() method tells us whether the JWT token is valid by comparing it with the jwtSecret
 
     req.user = payload.user;
+    next(); // authorization/verification of the JWT token won't probably work without this function
 
     } catch (error) {
         console.error(error.message);
         return res.status(403).json("Not Authorized");
         
     }
-}
+};

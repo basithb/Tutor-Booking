@@ -12,6 +12,11 @@ app.use(cors());
 
 app.use("/auth", require("./routes/jwtAuth"));
 
+
+// Dashboard Route
+
+app.use("/dashboard", require("./routes/dashboard")); 
+
 app.listen(5000, () => {
     console.log("Server is running on Port 5000");
 });

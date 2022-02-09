@@ -3,6 +3,7 @@ const pool = require("../db");
 const bcrypt = require("bcrypt");
 const jwtGenerator = require("../utils/jwtGenerator");
 const validInfo = require("../middleware/validInfo");
+const authorization = require("../middleware/authorization");
 
 // Routes for Registering
 
@@ -55,7 +56,7 @@ router.post("/register", validInfo, async (req, res) => {
         res.status(500).send("Server Error");
     }
     
-})
+});
 
 
 // Routes for Login
@@ -100,6 +101,21 @@ router.post("/login", validInfo, async (req, res) => {
       res.status(500).send("Server Error");  
     }
 
-})
+});
+
+// Route for Verification/Authorization of JWT tokens 
+
+router.get("/verify", authorization , async ( req , res ) => {
+
+try {
+    
+    res.json(true);
+
+} catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");  
+}
+
+});
 
 module.exports = router;

@@ -44,7 +44,7 @@ router.post("/register", async (req, res) => {
 
     //5. Generating our JWT Token
 
-    const token = jwtGenerator(newUser.rows[0].User_id); 
+    const token = jwtGenerator(newUser.rows[0].user_id); 
 
      res.json({token});
     
@@ -62,7 +62,37 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
     try {
 
-        
+    //1. Destructure the req.body  
+    
+    const { email, password } = req.body;  // Only email and password is required in the login routes.
+
+
+    //2. Check if the user exists withtin the database (if not, return error)
+
+    const user = await pool.query("SELECT * FROM tbl_login WHERE user_email =$1", [email]);
+
+    if(user.rows.length === 0)
+    {
+        return res.status(401).json("Incorrect Email or Password"); // return res.status(401).send("Incorrect Email or Password"); is also correct
+    }
+
+    
+    //3. Check if the input password is the same as the database password.
+
+    const validPassword = await bcrypt.compare(password, user.rows[0].user_password ); //Compares the input password with the User password stored in the database.
+
+    console.log(validPassword, `The password is ${validPassword}!`); // Just to check if the password is the correct inside the console.
+
+    if(!validPassword)
+    {
+       return res.status(401).json("Incorrect Email or Password");
+    }
+
+    //4. If all tests are passed, then we give them a JWT token 
+
+    const token = jwtGenerator(user.rows[0].user_id);
+
+    res.json({token});
         
     } catch (error) {
       console.error(error.message);

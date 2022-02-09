@@ -56,4 +56,19 @@ router.post("/register", async (req, res) => {
     
 })
 
+
+// Routes for Login
+
+router.post("/login", async (req, res) => {
+    try {
+
+        
+        
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send("Server Error");  
+    }
+
+})
+
 module.exports = router;

@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const pool = require("../db");
 const bcrypt = require("bcrypt");
+const jwtGenerator = require("../utils/jwtGenerator");
 
 // Routes for Registering
 
@@ -39,17 +40,20 @@ router.post("/register", async (req, res) => {
         "INSERT INTO tbl_login (user_name, user_email, user_password, user_type, user_status) VALUES ($1, $2, $3, $4, $5) RETURNING *", [name, email, bcryptPassword, type, status]
     );
 
-    res.json(newUser.rows[0]);
+    // res.json(newUser.rows[0]); // This has been commented to call the res.json below to get the token; works similar to a return statement inside a function.
 
     //5. Generating our JWT Token
 
+    const token = jwtGenerator(newUser.rows[0].User_id); 
 
+     res.json({token});
     
 
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Server Error");
     }
+    
 })
 
 module.exports = router;

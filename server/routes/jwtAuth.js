@@ -11,9 +11,9 @@ router.post("/register", async (req, res) => {
 
     // Steps for Register Route:
 
-    //1. Destructure the req.body (name, email, password)
+    //1. Destructure the req.body (name, email, password, type, status)
 
-    const { name, email, password } = req.body;
+    const { name, email, password, type, status } = req.body; // 'type' refers to 'user_type' with possible values of 'admin', 'tutor', or 'customer' AND 'status' refers to 'user_status' with possible values of 'active', or 'inactive'.
 
     //2. Check if the user exists (if the user already exists, then throw an error)
 
@@ -36,7 +36,7 @@ router.post("/register", async (req, res) => {
     //4. Enter the new user into the database
 
     let newUser = await pool.query(
-        "INSERT INTO tbl_login (user_name, user_email, user_password) VALUES ($1, $2, $3) RETURNING *", [name, email, bcryptPassword]
+        "INSERT INTO tbl_login (user_name, user_email, user_password, user_type, user_status) VALUES ($1, $2, $3, $4, $5) RETURNING *", [name, email, bcryptPassword, type, status]
     );
 
     res.json(newUser.rows[0]);

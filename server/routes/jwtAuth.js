@@ -64,12 +64,14 @@ router.post("/register", validInfo, async (req, res) => {
 router.post("/login", validInfo, async (req, res) => {
     try {
 
+    // Steps for Login Route
+    
     //1. Destructure the req.body  
     
     const { email, password } = req.body;  // Only email and password is required in the login routes.
 
 
-    //2. Check if the user exists withtin the database (if not, return error)
+    //2. Check if the user exists within the database (if not, return error)
 
     const user = await pool.query("SELECT * FROM tbl_login WHERE user_email =$1", [email]);
 

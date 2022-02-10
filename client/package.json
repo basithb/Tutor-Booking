@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "ajv": "^6.8.1",
+    "create-react-app": "^1.2.1",
     "react-router-dom": "^6.2.1",
     "react-toastify": "^8.1.1"
   }

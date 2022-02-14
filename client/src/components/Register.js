@@ -54,7 +54,6 @@ const Register = ({setAuth}) => {
         
     } 
 
-   
     return (
         <Fragment>
             <h1 className="text-center my-5">Register</h1>

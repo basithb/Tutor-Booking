@@ -25,7 +25,7 @@ router.post("/register", validInfo, async (req, res) => {
     ]);
 
     if(user.rows.length !== 0 ){
-        return res.status(401).send("User already exists");
+        return res.status(401).json("User already exists");
     }
 
 
@@ -85,7 +85,7 @@ router.post("/login", validInfo, async (req, res) => {
 
     const validPassword = await bcrypt.compare(password, user.rows[0].user_password ); //Compares the input password with the User password stored in the database.
 
-    console.log(validPassword, `The password is ${validPassword}!`); // Just to check if the password is the correct inside the console.
+    // console.log(validPassword, `The password is ${validPassword}!`); // Just to check if the password is the correct inside the console.
 
     if(!validPassword)
     {

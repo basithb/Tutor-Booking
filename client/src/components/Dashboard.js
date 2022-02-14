@@ -34,7 +34,7 @@ setAuth(false);
 
 useEffect(() => {
     getName();
-})
+},[]);
 
     return (
         <Fragment>

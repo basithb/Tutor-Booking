@@ -1,5 +1,8 @@
+import { parse } from "ipaddr.js";
 import React, {Fragment, useState} from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = ({setAuth}) => {
 
@@ -45,6 +48,18 @@ const Login = ({setAuth}) => {
 
         const parseRes = await response.json(); //parseResponse
 
+        if(parseRes.token) {
+            localStorage.setItem("token", parseRes.token);
+
+            setAuth(true);
+            toast.success("Login Successful!");
+
+        }
+
+        else{
+            setAuth(false);
+            toast.error(parseRes);
+        }
 
         localStorage.setItem("token", parseRes.token);
 

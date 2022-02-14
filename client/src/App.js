@@ -1,6 +1,8 @@
 
 import React, {Fragment, useState, useEffect } from 'react';
 import './App.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   BrowserRouter as Router,
@@ -14,7 +16,9 @@ import {
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
-import { parse } from 'ipaddr.js';
+// import { parse } from 'ipaddr.js';
+
+toast.configure();
 
 function App() {
 

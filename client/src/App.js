@@ -1,5 +1,5 @@
 
-import React, {Fragment, useState } from 'react';
+import React, {Fragment, useState, useEffect } from 'react';
 import './App.css';
 
 import {
@@ -14,6 +14,7 @@ import {
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
+import { parse } from 'ipaddr.js';
 
 function App() {
 
@@ -22,6 +23,32 @@ function App() {
   const setAuth = boolean => {
     setIsAuthenticated(boolean);
   }; 
+
+async function isAuth()
+{
+  try {
+
+    const response = await fetch("http://localhost:5000/auth/verify", {
+      method: "GET",
+      headers: { token: localStorage.token }
+    });
+
+    const parseRes = await response.json();
+    
+    parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false); // everytime you refresh when you're logged in to the dashboard, it let's you stay on the /dashboard page without taking you to /login.
+
+    
+  } catch (error) {
+    console.error(error.message);
+    
+  }
+}
+
+  useEffect(() => {
+    isAuth();
+  })
+
+  
 
   return (
     <Fragment>

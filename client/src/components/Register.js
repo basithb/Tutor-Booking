@@ -1,6 +1,6 @@
 import React, {Fragment, useState} from "react";
 
-const Register = () => {
+const Register = ({setAuth}) => {
 
     // Collecting state from these forms
     const [inputs, setInputs] = useState({
@@ -8,7 +8,6 @@ const Register = () => {
         email: "",
         password: "",
         name: "",
-
         });
 
     // Destructuring
@@ -44,7 +43,9 @@ const Register = () => {
 
         const parseRes = await response.json(); //parseResponse
 
-        console.log(parseRes);
+        localStorage.setItem("token", parseRes.token);
+
+        setAuth(true);
 
         } catch (error) {
             console.error(error.message);

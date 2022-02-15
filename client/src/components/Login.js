@@ -23,7 +23,7 @@ const Login = ({setAuth}) => {
          setInputs({...inputs, [event.target.name] : event.target.value });
      };  
      
-     
+
      //onSubmit() function to submit the inputs to our RESTful API to get the JWT Token
 
     const onSubmitForm = async (event) => {

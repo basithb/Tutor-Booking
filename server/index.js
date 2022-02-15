@@ -12,7 +12,6 @@ app.use(cors());
 
 app.use("/auth", require("./routes/jwtAuth"));
 
-
 // Dashboard Route
 
 app.use("/dashboard", require("./routes/dashboard")); 

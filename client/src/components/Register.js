@@ -54,7 +54,8 @@ const Register = ({setAuth}) => {
 
         }
 
-        else{
+        else
+        {
             setAuth(false);
             toast.error(parseRes);
         }

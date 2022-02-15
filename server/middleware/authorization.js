@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config(); // config() is to gain access to the environment variables in .env since we need that secret i.e jwtSecret
 
-
 module.exports = async (req, res, next) => {
     try {
         
@@ -22,6 +21,6 @@ module.exports = async (req, res, next) => {
     } catch (error) {
         console.error(error.message);
         return res.status(403).json("Not Authorized");
-        
+
     }
 };

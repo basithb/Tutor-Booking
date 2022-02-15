@@ -25,7 +25,6 @@ async function getName() {
     }
 }
 
-
 //logout() function
 const logout = async (event) => {
 

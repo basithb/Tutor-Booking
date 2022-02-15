@@ -80,7 +80,6 @@ router.post("/login", validInfo, async (req, res) => {
         return res.status(401).json("Incorrect Email or Password"); // return res.status(401).send("Incorrect Email or Password"); is also correct
     }
 
-    
     //3. Check if the input password is the same as the database password.
 
     const validPassword = await bcrypt.compare(password, user.rows[0].user_password ); //Compares the input password with the User password stored in the database.

@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
+
+.landing-hero-text{
+    font-family: 'Poppins', sans-serif;
+    color: #000;
+    font-size: 50px;
+    margin-top: 14rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    line-height: 1.2;
+    
+}
+
+.landing-subhero-text{
+    font-family: 'Poppins', sans-serif;
+    color: rgba(16,10,49,.64);
+    font-size: 22px;
+    max-width: 630px;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 20rem;
+    margin-inline-end: 0px;
+    line-height: 1.5;
+}
+
+.float-bg-absolute{
+    position: absolute;
+    left: -9.2%;
+    top: auto;
+    right: 0;
+    bottom: -57%;
+    /* width: 120%; */
+    min-width: 120%;
+}
+
+img{
+    border: 0;
+    vertical-align: middle;
+    display: inline-block;
+    max-width: 100%;
+
+}

@@ -16,6 +16,9 @@ import {
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
+import Landing from './components/landingPage/Landing';
+// import Navbar from './components/Navbar';
+// import Footer from './components/Footer';
 
 
 toast.configure();
@@ -57,6 +60,8 @@ async function isAuth()
   return (
     <Fragment>
       <Router>
+        {/* <Navbar/> */}
+
         <div className="container">
           <Routes>
           <Route exact path="/login" element = { !isAuthenticated ? (<Login setAuth={setAuth} /> ) : (<Navigate to ="/dashboard"/>)}/>
@@ -64,8 +69,12 @@ async function isAuth()
           <Route exact path="/register" element = { !isAuthenticated ? (<Register setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
 
           <Route exact path="/dashboard" element = { isAuthenticated ? (<Dashboard setAuth={setAuth} />) :(<Navigate to ="/login"/>)}/>
+
+          <Route exact path="/landing" element = { isAuthenticated ? (<Navigate to ="/landing"/>) : (<Landing setAuth={!setAuth} />)}/>
+
           </Routes>
         </div>
+        {/* <Footer/> */}
       </Router>
     </Fragment>
   );

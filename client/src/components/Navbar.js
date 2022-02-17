@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import './landingPage/Landing.css';
 
 const Navbar = () => {
     return (
@@ -35,16 +36,21 @@ const Navbar = () => {
                                 </li>
                                 <li class="nav-item px-3">
                                     <a class="nav-link" aria-current="page" href="#">
-                                        Pricing
+                                        Our Pricing
+                                    </a>
+                                </li>
+                                <li class="nav-item px-3">
+                                    <a class="nav-link" aria-current="page" href="#">
+                                        Tutor Platform
                                     </a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="d-inline gap-3 d-md-flex">
-                            <Link to="/login" className="btn btn-light btn-md mr-3">
+                        <div class="d-inline gap-2 d-md-flex">
+                            <Link to="/login" className="btn btn-light btn-md mr-2 nav-log-button">
                                 Log In
                             </Link>
-                            <Link to="/register" className="btn btn-primary btn-md mr-3">
+                            <Link to="/register" className="btn btn-primary btn-md mr-2 nav-reg-button">
                                 Register
                             </Link>
                         </div>

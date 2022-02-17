@@ -4,8 +4,8 @@
     font-family: 'Poppins', sans-serif;
     color: #000;
     font-size: 50px;
-    margin-top: 14rem;
-    padding-top: 1rem;
+    margin-top: 14rem; 
+    padding-top: 1rem; 
     padding-bottom: 0.5rem;
     line-height: 1.2;
     
@@ -25,19 +25,37 @@
 }
 
 .float-bg-absolute{
-    position: absolute;
+    position: fixed;
     left: -9.2%;
-    top: auto;
+    top: -13%;
     right: 0;
     bottom: -57%;
-    /* width: 120%; */
-    min-width: 120%;
+    min-width: 119%; 
+    box-sizing:border-box;
 }
 
 img{
     border: 0;
     vertical-align: middle;
     display: inline-block;
-    max-width: 100%;
 
+}
+
+.nav-reg-button, .nav-log-button{
+    border-radius: 100px;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.landingBody-reg-button{
+    border-radius: 100px;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav{
+    font-family: 'Poppins', sans-serif;
+}
+
+footer{
+    font-family: 'Poppins', sans-serif;
 }

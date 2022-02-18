@@ -1,0 +1,19 @@
+.register-button{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 2rem;
+    font-weight: bold;
+}
+
+.input-firstName, .input-lastName, .input-stateName, .input-cityName, .input-email, .input-password, .input-confirmPassword{
+    border-radius: 1rem;
+}
+
+.register-card{
+    margin-top: 3rem;
+}
+
+.register-sub-text{
+    text-decoration: none;
+}
+

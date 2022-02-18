@@ -12,8 +12,10 @@ const LandingFooter = () => {
                 <div class="container text-center">
                     <div class="row">
     
-                        <div class="col-md mt-1 mb-1">
-                            <h5 class="font-weight-bold">tutor'd</h5>
+                        <div class="col-md mt-1 mb-1 pt-3 fw-bold">
+                            <a class="navbar-brand text-dark" href="/tutor">
+                            tutor'd
+                        </a>
                         </div>
 
                         <div class="col-md mt-1 mb-1">

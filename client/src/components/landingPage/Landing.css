@@ -24,14 +24,14 @@
     line-height: 1.5;
 }
 
-.float-bg-absolute{
+.float-bg-fixed{
     position: fixed;
     left: -9.2%;
     top: -13%;
     right: 0;
     bottom: -57%;
     min-width: 119%; 
-    box-sizing:border-box;
+    z-index: -1
 }
 
 img{

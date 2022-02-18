@@ -13,7 +13,7 @@ const LandingBody = () => {
             </Link>
             </div>
             
-            <img className="float-bg-absolute" src="https://uploads-ssl.webflow.com/611cb284a5f4f500b86d82e8/61e07deb86cd11cc5bcd72c3_bg-float%20(1)%20(1)-p-1600.png" alt="" width="auto" height="auto"/>
+            <img className="float-bg-fixed" src="https://uploads-ssl.webflow.com/611cb284a5f4f500b86d82e8/61e07deb86cd11cc5bcd72c3_bg-float%20(1)%20(1)-p-1600.png" alt="" width="auto" height="auto"/>
 
         </Fragment>
     );

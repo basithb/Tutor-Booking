@@ -66,7 +66,7 @@ const Login = ({ setAuth }) => {
             <div className="container py-5 h-100 login-container ">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div className="card bg-white text-dark login-card">
+                        <div className="card shadow-lg p-3 mb-5 bg-body bg-white text-dark login-card">
                             <div className="card-body p-5 text-center">
                                 <h2 className="mb-4 fw-bold">Welcome back!</h2>
 

@@ -102,3 +102,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+# server local files env files
+.server/env
+
+#database files
+.db.js

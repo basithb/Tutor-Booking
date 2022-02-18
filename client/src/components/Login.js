@@ -67,7 +67,7 @@ const Login = ({ setAuth }) => {
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-12 col-md-8 col-lg-6 col-xl-5">
                         <div className="card shadow-lg p-3 mb-5 bg-body bg-white text-dark login-card">
-                            <div className="card-body p-5 text-center">
+                            <div className="card-body p-4 text-center">
                                 <h2 className="mb-4 fw-bold">Welcome back!</h2>
 
                                 <form onSubmit={onSubmitForm}>
@@ -90,7 +90,7 @@ const Login = ({ setAuth }) => {
                             </div>
                         </div>
                         <div className="text-center mt-4">
-                            <p>Don't have an account? <Link to="/register" className="login-sub-text fw-bold">Find a Tutor</Link> here.</p>
+                            <p>Don't have an account? <Link to="/register" className="login-sub-text fw-bold text-success">Find a Tutor</Link> here.</p>
                         </div>
                     </div>
                 </div>

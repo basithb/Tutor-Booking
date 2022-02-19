@@ -36,7 +36,7 @@ const Register = ({ setAuth }) => {
 
             // Creating a fetch request 
             const response = await fetch(
-                "http://localhost:5000/auth/register",
+                "http://localhost:5000/auth/customer-register",
                 {
                     method: "POST",
                     headers: {
@@ -74,7 +74,7 @@ const Register = ({ setAuth }) => {
     return (
         <Fragment>
             <Navbar />
-            {/* <h1 className="text-center my-5">Register</h1>
+            <h1 className="text-center my-5">Register</h1>
             <form onSubmit={onSubmitForm}>
 
                 <input type="text" name="name" placeholder="Enter your Name" className="form-control my-3" value={name} onChange={event => onChange(event)} />
@@ -88,7 +88,7 @@ const Register = ({ setAuth }) => {
                 </div>
 
             </form>
-            <Link to="/login">Login</Link> */}
+            <Link to="/login">Login</Link>
 
 
             <div className="container py-5 h-200 register-container ">

@@ -7,7 +7,7 @@ const authorization = require("../middleware/authorization");
 
 // Routes for Registering
 
-router.post("/register", validInfo, async (req, res) => {
+router.post("/customer-register", validInfo, async (req, res) => {
 
     try {
      

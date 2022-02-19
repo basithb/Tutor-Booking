@@ -9,7 +9,7 @@ module.exports = function (req, res, next) {
       return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userEmail); // check if the email is following the regex (regular expression) pattern
     }
   
-    if (req.path === "/register") {
+    if (req.path === "/customer-register") {
       // console.log(!email.length);
       if (![email, name, password].every(Boolean)) {
         return res.status(401).json("Missing Credentials");

@@ -2,7 +2,7 @@ module.exports = function (req, res, next) {
 
     //1. Destructures email, name, and password
 
-    const { email, name, password } = req.body;
+    const { email, password, firstName, lastName, stateName, cityName } = req.body;
   
     //2. Checking  if the email is valid
     function validEmail(userEmail) {
@@ -11,7 +11,7 @@ module.exports = function (req, res, next) {
   
     if (req.path === "/customer-register") {
       // console.log(!email.length);
-      if (![email, name, password].every(Boolean)) {
+      if (![email, password, firstName, lastName, stateName, cityName].every(Boolean)) {
         return res.status(401).json("Missing Credentials");
       } else if (!validEmail(email)) {
         return res.status(401).json("Invalid Email");

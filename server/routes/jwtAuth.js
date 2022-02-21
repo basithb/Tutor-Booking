@@ -16,7 +16,7 @@ router.post("/customer-register", validInfo, async (req, res) => {
 
     //1. Destructure the req.body (name, email, password, type, status)
 
-    const { name, email, password } = req.body; // 'type' refers to 'user_type' with possible values of 'admin', 'tutor', or 'customer' AND 'status' refers to 'user_status' with possible values of 'active', or 'inactive'.
+    const {email, password, firstName, lastName, stateName, cityName } = req.body; // 'type' refers to 'user_type' with possible values of 'admin', 'tutor', or 'customer' AND 'status' refers to 'user_status' with possible values of 'active', or 'inactive'.
 
     //2. Check if the user exists (if the user already exists, then throw an error)
 
@@ -38,18 +38,25 @@ router.post("/customer-register", validInfo, async (req, res) => {
 
     //4. Enter the new user into the database
 
-    let newUser = await pool.query(
-        "INSERT INTO tbl_login (user_name, user_email, user_password, user_type, user_status) VALUES ($1, $2, $3, 'customer', 'active') RETURNING *", [name, email, bcryptPassword]
-    );
+    let newUserLoginDetails = await pool.query(
+        "INSERT INTO tbl_login (user_name, user_email, user_password, user_type, user_status) VALUES ($1, $2, $3, 'customer', 'active') RETURNING *", [firstName, email, bcryptPassword]
+    )
+
+    const userID = newUserLoginDetails.rows[0].user_id;
+    
+
+    let newUserBasicDetails = await pool.query(
+        "INSERT INTO tbl_customer (user_id,customer_firstName, customer_lastName, customer_stateName, customer_cityName) VALUES ($1, $2, $3, $4, $5) RETURNING *", [userID, firstName, lastName, stateName, cityName]
+    )
+
 
     // res.json(newUser.rows[0]); // This has been commented to call the res.json below to get the token; works similar to a return statement inside a function.
 
     //5. Generating our JWT Token
 
-    const token = jwtGenerator(newUser.rows[0].user_id); 
+    const token = jwtGenerator(newUserLoginDetails.rows[0].user_id);
 
      res.json({token});
-    
 
     } catch (error) {
         console.error(error.message);

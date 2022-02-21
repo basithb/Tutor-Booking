@@ -12,11 +12,14 @@ const Register = ({ setAuth }) => {
         // Default values
         email: "",
         password: "",
-        name: "",
+        firstName: "",
+        lastName: "",
+        stateName: "",
+        cityName: "",
     });
 
     // Destructuring
-    const { email, password, name } = inputs;
+    const { email, password, firstName, lastName, stateName, cityName } = inputs;
 
     //onChange() function to change default values from the inputs i.e email ,name, and password.
 
@@ -32,7 +35,7 @@ const Register = ({ setAuth }) => {
 
         try {
 
-            const body = { email, password, name };
+            const body = { email, password, firstName, lastName, stateName, cityName };
 
             // Creating a fetch request 
             const response = await fetch(
@@ -74,22 +77,6 @@ const Register = ({ setAuth }) => {
     return (
         <Fragment>
             <Navbar />
-            <h1 className="text-center my-5">Register</h1>
-            <form onSubmit={onSubmitForm}>
-
-                <input type="text" name="name" placeholder="Enter your Name" className="form-control my-3" value={name} onChange={event => onChange(event)} />
-
-                <input type="email" name="email" placeholder="Enter your Email" className="form-control my-3" value={email} onChange={event => onChange(event)} />
-
-                <input type="password" name="password" placeholder="Enter your Password" className="form-control my-3" value={password} onChange={event => onChange(event)} />
-
-                <div className="d-grid">
-                    <button className="btn btn-success ">Submit</button>
-                </div>
-
-            </form>
-            <Link to="/login">Login</Link>
-
 
             <div className="container py-5 h-200 register-container ">
                 <div className="row d-flex justify-content-center align-items-center h-100">
@@ -104,14 +91,14 @@ const Register = ({ setAuth }) => {
 
                                         <div className="col-md-6 mb-4">
                                             <div className="form-floating">
-                                                <input type="text" name="firstName" className="form-control input-firstName" id="floatingFirstName" required/>
+                                                <input type="text" name="firstName" className="form-control input-firstName" value={firstName}id="floatingFirstName" onChange={(event) => onChange(event)} required/>
                                                 <label for="floatingFirstName">First Name</label>
                                             </div>
                                         </div>
 
                                         <div className="col-md-6 mb-4">
                                             <div className="form-floating">
-                                                <input type="text" name="lastName" className="form-control input-lastName" id="floatingLastName" required/>
+                                                <input type="text" name="lastName" className="form-control input-lastName" value={lastName} id="floatingLastName" onChange={(event) => onChange(event)} required/>
                                                 <label for="floatingLastName">Last Name</label>
                                             </div>
                                         </div>
@@ -121,14 +108,14 @@ const Register = ({ setAuth }) => {
                                     <div className="row">
                                         <div className="col-md-6 mb-4">
                                             <div className="form-floating">
-                                                <input type="text" name="stateName" className="form-control input-stateName" id="floatingStateName" required/>
+                                                <input type="text" name="stateName" className="form-control input-stateName" value={stateName}id="floatingStateName" onChange={(event) => onChange(event)} required/>
                                                 <label for="floatingStateName">State</label>
                                             </div>
                                         </div>
 
                                         <div className="col-md-6 mb-4">
                                             <div className="form-floating">
-                                                <input type="text" name="cityName" className="form-control input-cityName" id="floatingCityName" required/>
+                                                <input type="text" name="cityName" className="form-control input-cityName" value={cityName} id="floatingCityName" onChange={(event) => onChange(event)} required/>
                                                 <label for="floatingCityName">City</label>
                                             </div>
                                         </div>

@@ -131,23 +131,13 @@ const Register = ({ setAuth }) => {
 
                                     </div>
 
-                                    <div className="row">
-                                        <div className="col-md-6">
+                                        <div className="col-md-12">
                                             <div className="form-floating ">
                                                 <input type="password" name="password" className="form-control input-password" id="floatingPassword" value={password}
                                                     onChange={(event) => onChange(event)} required/>
                                                 <label for="floatingPassword">Password</label>
                                             </div>
-                                        </div>
-
-                                        <div className="col-md-6">
-                                            <div className="form-floating ">
-                                                <input type="password" name="confirmPassword" className="form-control input-confirmPassword" id="floatingConfirmPassword"
-                                                    onChange={(event) => onChange(event)} required/>
-                                                <label for="floatingConfirmPassword">Confirm Password</label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        </div>          
 
                                     <div className="d-grid">
                                         <button className="btn btn-success register-button">Register</button>

@@ -59,7 +59,7 @@ async function isAuth()
     <Fragment>
       <Router>
 
-        <div className="container">
+        
           <Routes>
           <Route exact path="/login" element = { !isAuthenticated ? (<Login setAuth={setAuth} /> ) : (<Navigate to ="/dashboard"/>)}/>
 
@@ -70,7 +70,7 @@ async function isAuth()
           <Route exact path="/tutor" element = { isAuthenticated ? (<Navigate to ="/tutor"/>) : (<Landing setAuth={!setAuth} />)}/>
 
           </Routes>
-        </div>
+       
         
       </Router>
     </Fragment>

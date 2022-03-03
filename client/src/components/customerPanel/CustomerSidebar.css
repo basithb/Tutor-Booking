@@ -1,0 +1,73 @@
+
+ .navbar-vertical.navbar-expand-xs.fixed-start {
+    left: 0;
+}
+.navbar-vertical.bg-white {
+    box-shadow: 0 0 2rem 0 rgb(136 152 170 / 15%);
+}
+.navbar-vertical.navbar-expand-xs {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 15.625rem !important;
+    overflow-y: auto;
+    padding: 0;
+    box-shadow: none;
+    z-index: 9999;
+}
+.ps {
+    overflow: hidden !important;
+    overflow-anchor: none;
+    -ms-overflow-style: none;
+    touch-action: auto;
+    -ms-touch-action: auto;
+}
+.sidenav {
+    z-index: 999;
+}
+.main-content, .sidenav {
+    transition: all 0.2s ease-in-out;
+}
+.navbar {
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 16%);
+}
+.border-radius-xl {
+    border-radius: 1rem;
+}
+.bg-white {
+    background-color: #fff !important;
+}
+.ms-4 {
+    margin-left: 1.5rem !important;
+}
+.my-3 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+.border-0 {
+    border-width: 0 !important;
+}
+.border-0 {
+    border: 0 !important;
+}
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+}  
+
+.sidebar-customer-text{
+    margin-left: 0.5rem;
+} 
+
+.hr-customer-logout{
+    margin-top: 23.5rem;
+}

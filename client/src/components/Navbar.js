@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <Fragment>
             <header>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-center mx-4">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-center">
                     <div class="container-fluid my-2 px-5 ">
 
                         <button

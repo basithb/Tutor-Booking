@@ -1,5 +1,5 @@
 
- .navbar-vertical.navbar-expand-xs.fixed-start {
+.navbar-vertical.navbar-expand-xs.fixed-start {
     left: 0;
 }
 .navbar-vertical.bg-white {
@@ -24,14 +24,14 @@
     touch-action: auto;
     -ms-touch-action: auto;
 }
-.sidenav {
+.customer-sidebar {
     z-index: 999;
 }
-.main-content, .sidenav {
+.main-content, .customer-sidebar {
     transition: all 0.2s ease-in-out;
 }
-.navbar {
-    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 16%);
+.customer-sidebar {
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
 }
 .border-radius-xl {
     border-radius: 1rem;
@@ -52,7 +52,7 @@
 .border-0 {
     border: 0 !important;
 }
-.navbar {
+.customer-sidebar {
     position: relative;
     display: flex;
     flex-wrap: wrap;

@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import "./Dashboard.css";
 import AdminDashboard from "./adminPanel/AdminDashboard";
 import TutorDashboard from "./tutorPanel/TutorDashboard";
 import CustomerDashboard from "./customerPanel/CustomerDashboard";

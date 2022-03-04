@@ -42,7 +42,7 @@ const CustomerSidebar = (props, { setAuth }) => {
     return (
         <Fragment>
             
-            <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+            <aside class="customer-sidebar bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
 
                 <div class="d-flex flex-column flex-shrink-0 p-3">
                     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">

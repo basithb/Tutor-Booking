@@ -1,5 +1,5 @@
 
- .navbar-vertical.navbar-expand-xs.fixed-start {
+.navbar-vertical.navbar-expand-xs.fixed-start {
     left: 0;
 }
 .navbar-vertical.bg-white {
@@ -24,13 +24,13 @@
     touch-action: auto;
     -ms-touch-action: auto;
 }
-.sidenav {
+.tutor-sidebar {
     z-index: 999;
 }
-.main-content, .sidenav {
+.main-content, .tutor-sidebar {
     transition: all 0.2s ease-in-out;
 }
-.navbar {
+.tutor-sidebar {
     box-shadow: 0 2px 12px 0 rgb(0 0 0 / 16%);
 }
 .border-radius-xl {
@@ -52,7 +52,7 @@
 .border-0 {
     border: 0 !important;
 }
-.navbar {
+.tutor-sidebar {
     position: relative;
     display: flex;
     flex-wrap: wrap;

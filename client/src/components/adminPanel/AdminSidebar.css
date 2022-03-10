@@ -31,7 +31,7 @@
     transition: all 0.2s ease-in-out;
 }
 .admin-sidebar {
-    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.2)!important;
 }
 .border-radius-xl {
     border-radius: 1rem;
@@ -69,5 +69,5 @@
 } 
 
 .hr-admin-logout{
-    margin-top: 18.5rem !important;
+    margin-top: 10rem !important;
 }

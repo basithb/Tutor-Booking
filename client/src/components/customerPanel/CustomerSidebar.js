@@ -41,7 +41,7 @@ const CustomerSidebar = (props, { setAuth }) => {
 
     return (
         <Fragment>
-            
+
             <aside class="customer-sidebar bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
 
                 <div class="d-flex flex-column flex-shrink-0 p-3">
@@ -51,24 +51,51 @@ const CustomerSidebar = (props, { setAuth }) => {
                     <hr />
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active link-dark">
-                                User Profile
-                            </a>
+                            {
+                                isActive === "profile" ?
+
+                                    <Link to="/profile" className="nav-link active sidebutton link-dark">
+                                        Profile
+                                    </Link> : <Link to="/profile" className="nav-link sidebutton link-dark">
+                                        Profile
+                                    </Link>
+                            }
+
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link  link-dark">
-                                Find Tutors
-                            </a>
+                            {
+                                isActive === "session" ?
+
+                                    <Link to="/session" className="nav-link active sidebutton link-dark">
+                                        Find Sessions
+                                    </Link> : <Link to="/session" className="nav-link sidebutton link-dark">
+                                        Find Sessions
+                                    </Link>
+                            }
                         </li>
                         <li>
-                            <a href="#" class="nav-link link-dark">
-                                Bookings
-                            </a>
+
+                             {
+                                isActive === "booking" ?
+
+                                    <Link to="/booking" className="nav-link active sidebutton link-dark">
+                                       Bookings
+                                    </Link> : <Link to="/booking" className="nav-link sidebutton link-dark">
+                                       Bookings
+                                    </Link>
+                            }
                         </li>
                         <li>
-                            <a href="#" class="nav-link link-dark">
-                                Add Card
-                            </a>
+                            
+                            {
+                                isActive === "card" ?
+
+                                    <Link to="/card" className="nav-link active sidebutton link-dark">
+                                        Add Card
+                                    </Link> : <Link to="/card" className="nav-link sidebutton link-dark">
+                                        Add Card
+                                    </Link>
+                            }
                         </li>
                     </ul>
 

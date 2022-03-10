@@ -1,13 +1,4 @@
-.min-height-300 {
-    min-height: 17rem !important;
-    margin-top: 0%;
-}
-.bg-primary {
-    background-color: #5e72e4 !important;
-}
-.w-100 {
-    width: 100% !important;
-}
-.position-absolute {
-    position: absolute !important;
+.admin-navbar{
+    padding-top: 3.25rem;
+    padding-bottom: 0.5rem;
 }

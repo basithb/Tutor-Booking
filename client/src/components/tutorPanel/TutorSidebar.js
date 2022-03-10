@@ -53,7 +53,7 @@ const TutorSidebar = (props, { setAuth }) => {
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
                             <a href="#" class="nav-link active link-dark">
-                                User Profile
+                                Profile
                             </a>
                         </li>
                         <li class="nav-item">

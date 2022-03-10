@@ -65,7 +65,7 @@ const Login = ({ setAuth }) => {
             <Navbar />
             <div className="container py-5 h-100 login-container ">
                 <div className="row d-flex justify-content-center align-items-center h-100">
-                    <div className="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div className="col-12-login col-md-8 col-lg-6 col-xl-5">
                         <div className="card shadow-lg p-3 mb-5 bg-body bg-white text-dark login-card">
                             <div className="card-body p-4 text-center">
                                 <h2 className="mb-4 fw-bold">Welcome back!</h2>

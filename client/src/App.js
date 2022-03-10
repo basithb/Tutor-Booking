@@ -17,6 +17,9 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
 import Landing from './components/landingPage/Landing';
+import AdminDashboard from './components/adminPanel/AdminDashboard';
+import Customer from './components/adminPanel/Customer';
+import Tutor from './components/adminPanel/Tutor';
 
 
 toast.configure();
@@ -61,13 +64,21 @@ async function isAuth()
 
         
           <Routes>
+          <Route exact path="/" element = { isAuthenticated ? (<Navigate to ="/"/>) : (<Landing setAuth={!setAuth} />)}/>
+
           <Route exact path="/login" element = { !isAuthenticated ? (<Login setAuth={setAuth} /> ) : (<Navigate to ="/dashboard"/>)}/>
 
           <Route exact path="/register" element = { !isAuthenticated ? (<Register setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
 
           <Route exact path="/dashboard" element = { isAuthenticated ? (<Dashboard setAuth={setAuth} />) :(<Navigate to ="/login"/>)}/>
 
-          <Route exact path="/tutor" element = { isAuthenticated ? (<Navigate to ="/tutor"/>) : (<Landing setAuth={!setAuth} />)}/>
+          <Route exact path="/profile" element = { !isAuthenticated ? (<AdminDashboard setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+
+          <Route exact path="/customer" element = { !isAuthenticated ? (<Customer setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+
+          <Route exact path="/tutor" element = { !isAuthenticated ? (<Tutor setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+       
+
 
           </Routes>
        

@@ -1,0 +1,50 @@
+.card-subject-header{
+    margin-bottom: 1.25rem ;
+    border-radius: 1rem !important;
+}
+.card-subject-header-text{
+    margin: 0;
+    display: inline-block;
+}
+
+.btn-add-subject{
+float: right;
+margin-right: 1rem;
+}
+
+.card-subject{
+    border-radius: 1rem !important;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.185)!important;
+    margin-left: 6rem;
+}
+
+.modal-title-subject{
+    text-align: center;
+    margin-left: auto;
+}
+
+.add-subject-done-div{
+text-align: center;
+}
+
+.add-subject-done-button{
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    border-radius: 1.5rem;
+    font-weight: bold;
+  
+}
+
+.input-subjectName{
+    border-radius: 1rem !important; 
+}
+
+.modal-subject-header{
+    margin-bottom: 0.75rem;
+}
+
+.select-categoryEducationLevel{
+    border-radius: 1rem;
+}

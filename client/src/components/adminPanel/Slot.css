@@ -1,0 +1,57 @@
+.card-slot-header{
+    margin-bottom: 1.25rem ;
+    border-radius: 1rem !important;
+}
+.card-slot-header-text{
+    margin: 0;
+    display: inline-block;
+}
+
+.btn-add-slot{
+float: right;
+margin-right: 1rem;
+}
+
+.card-slot{
+    border-radius: 1rem !important;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.185)!important;
+    margin-left: 6rem;
+}
+
+.modal-title-slot{
+    text-align: center;
+    margin-left: auto;
+}
+
+.add-slot-done-div{
+text-align: center;
+}
+
+.add-slot-done-button{
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    border-radius: 1.5rem;
+    font-weight: bold;
+  
+}
+
+.input-slotStartTime{
+    border-radius: 1rem;
+}
+
+.modal-slot-header{
+    margin-bottom: 0.75rem;
+}
+
+
+.input-slotStartTime:valid{
+    border: solid #198754 3px;
+}
+
+.input-slotStartTime:invalid{
+    border: solid #dc3545 3px;
+}
+
+  

@@ -80,7 +80,7 @@ const Register = ({ setAuth }) => {
 
             <div className="container py-5 h-200 register-container ">
                 <div className="row d-flex justify-content-center align-items-center h-100">
-                    <div className="col-12 col-md-8 col-lg-9 col-xl-7">
+                    <div className="col-12-register col-md-8 col-lg-9 col-xl-7">
                         <div className="card shadow-lg p-3 bg-body bg-white text-dark register-card">
                             <div className="card-body p-3 text-center">
                                 <h2 className="mb-4 fw-bold">Create an Account</h2>

@@ -1,0 +1,64 @@
+.card-booking-header{
+    margin-bottom: 1.25rem ;
+    border-radius: 1rem !important;
+}
+.card-booking-body-text{
+    margin: 0;
+    display: inline-block;
+    font-size: x-large;
+}
+
+.card-booking{
+    border-radius: 1rem !important;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.185)!important;
+}
+
+.card-booking-tutorName-text{
+    display: inline-block;
+
+}
+
+.card-booking-slotDateStart-text{
+    display: inline-block;
+}
+
+.card-booking-slotTimeStart-text{
+    display: inline-block;
+}
+
+.card-booking-dot{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.card-booking-body{
+    margin-top: -3rem;
+}
+
+.card-booking-sessionBooked-text{
+display: inline-block;
+}
+
+.card-booking-cost-text{
+    display: inline-block;
+    float: right;
+}
+
+.card-booking-rupee-symbol{
+    display: inline-block;
+    float: right;
+}
+
+/* Remove these temp styles */
+
+.card-temp{
+    margin-bottom: 0.5rem;
+}
+
+
+
+
+
+
+
+  

@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import './landingPage/Landing.css';
+import "./Navbar.css";
 
 const Navbar = () => {
     return (
@@ -20,7 +21,7 @@ const Navbar = () => {
                         >
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <a class="navbar-brand fw-bold" href="/tutor">
+                        <a class="navbar-brand fw-bold" href="/">
                             tutor'd
                         </a>
                         <div
@@ -30,17 +31,17 @@ const Navbar = () => {
                             <div className="ml-4">
                             <ul class="navbar-nav mb-2 mb-lg-0">
                                 <li class="nav-item px-3">
-                                    <a class="nav-link" aria-current="page" href="#">
+                                    <a class="nav-link nav-text-1" aria-current="page" href="#">
                                     Our Tutors
                                     </a>
                                 </li>
                                 <li class="nav-item px-3 ">
-                                    <a class="nav-link" aria-current="page" href="#">
+                                    <a class="nav-link nav-text-2" aria-current="page" href="#">
                                         Our Pricing
                                     </a>
                                 </li>
                                 <li class="nav-item px-3">
-                                    <a class="nav-link" aria-current="page" href="#">
+                                    <a class="nav-link nav-text-3" aria-current="page" href="#">
                                         Tutor Platform
                                     </a>
                                 </li>

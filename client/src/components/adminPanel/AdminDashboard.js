@@ -1,14 +1,14 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "./AdminDashboard.css";
+import { Link } from "react-router-dom";
 import AdminSidebar from "./AdminSidebar";
 import AdminNavbar from "./AdminNavbar";
+import PanelBackdrop from "../backdropPanel/PanelBackdrop";
 
+const AdminProfile = (props, { setAuth }) => {
 
-const AdminDashboard = ({ setAuth }) => {
-
-    //  //displaying states
-    //  const [name, setName] = useState("")
 
     async function getName() {
         try {
@@ -21,7 +21,6 @@ const AdminDashboard = ({ setAuth }) => {
 
             const parseRes = await response.json();
 
-            //  setName(parseRes.user_name);
 
         } catch (error) {
             console.error(error.message);
@@ -32,14 +31,41 @@ const AdminDashboard = ({ setAuth }) => {
         getName();
     }, []);
 
+    const isActive = "admin-profile";
 
     return (
         <Fragment>
-            <AdminNavbar />
-            <AdminSidebar />
+            <body>
+                <PanelBackdrop />
+                <AdminNavbar />
+                <AdminSidebar setAuth={setAuth} isActive={isActive} />
+                <main class="main-content position-relative border-radius-lg">
+                    <div className="container-fluid hello-admin-card py-4">
+                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                            <div class="card">
+                                <div class="card-body p-4">
+                                    <div class="col-8">
+                                        <div class="hello-text">
+                                            <h5 class="hello-admin-heading">
+                                                Hello,
+                                            </h5>
+                                            <h5 class="hello-heading-adminName fw-bold">
+                                                Admin
+                                            </h5>
+                                            <h5 class="hello-heading-wave">
+                                                👋
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </body>
 
         </Fragment>
-    )
+    );
 }
 
-export default AdminDashboard;
+export default AdminProfile;

@@ -7,14 +7,14 @@ import AdminSidebar from "./AdminSidebar";
 import { Link } from "react-router-dom";
 import AdminNavbar from "./AdminNavbar";
 
-const Slot = (props, { setAuth }) => {
+const AdminSlot = (props, { setAuth }) => {
     try {
 
     } catch (error) {
         console.error(error.message);
     }
 
-    const isActive = "slot";
+    const isActive = "admin-slot";
 
     return (
         <Fragment>
@@ -115,10 +115,6 @@ const Slot = (props, { setAuth }) => {
     )
 
 
-
-
-
-
 }
 
-export default Slot;
+export default AdminSlot;

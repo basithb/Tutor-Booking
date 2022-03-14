@@ -7,14 +7,14 @@ import AdminSidebar from "./AdminSidebar";
 import { Link } from "react-router-dom";
 import AdminNavbar from "./AdminNavbar";
 
-const Subject = (props, { setAuth }) => {
+const AdminSubject = (props, { setAuth }) => {
     try {
 
     } catch (error) {
         console.error(error.message);
     }
 
-    const isActive = "subject";
+    const isActive = "admin-subject";
 
     return (
         <Fragment>
@@ -125,4 +125,4 @@ const Subject = (props, { setAuth }) => {
 
 }
 
-export default Subject;
+export default AdminSubject;

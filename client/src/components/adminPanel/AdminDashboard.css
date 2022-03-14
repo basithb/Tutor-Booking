@@ -1,0 +1,51 @@
+.admin-sidebar.fixed-start+.main-content{
+    margin-left: 17.125rem;
+}
+
+.card{
+    box-shadow: 0 0 2rem 0 rgb(136 152 170 / 15%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, 0.125);
+    border-radius: 1rem;
+
+}
+.p-3 {
+    padding: 1rem !important;
+}
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.5rem;
+}
+
+.py-4 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: var(--bs-gutter-x, 1.5rem);
+    padding-left: var(--bs-gutter-x, 1.5rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.hello-admin-heading{
+    display: inline-block;
+}
+
+.hello-heading-adminName{
+    display: inline-block;
+    margin-left: 4px;
+}
+
+.hello-heading-wave{
+    display: inline-block;
+    margin-left: 4px;
+}

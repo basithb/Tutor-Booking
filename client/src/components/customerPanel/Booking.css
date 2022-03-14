@@ -3,14 +3,24 @@
     border-radius: 1rem !important;
 }
 .card-booking-body-text{
-    margin: 0;
+    margin-left: 0.5rem;
+    margin-bottom: 0rem;
     display: inline-block;
     font-size: x-large;
+}
+
+.card-booking-category-text{
+    margin-left: 0.5rem;
+}
+
+.card-booking-sessionBooked-cost-details{
+    margin-bottom: 0.25rem;
 }
 
 .card-booking{
     border-radius: 1rem !important;
     box-shadow: 0 1rem 3rem rgba(0,0,0,.185)!important;
+    padding-bottom: 13px;
 }
 
 .card-booking-tutorName-text{
@@ -49,11 +59,8 @@ display: inline-block;
     float: right;
 }
 
-/* Remove these temp styles */
 
-.card-temp{
-    margin-bottom: 0.5rem;
-}
+
 
 
 

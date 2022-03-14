@@ -7,14 +7,14 @@ import CustomerSidebar from "./CustomerSidebar";
 import { Link } from "react-router-dom";
 import CustomerNavbar from "./CustomerNavbar";
 
-const Booking = (props, { setAuth }) => {
+const CustomerBooking = (props, { setAuth }) => {
     try {
 
     } catch (error) {
         console.error(error.message);
     }
 
-    const isActive = "booking";
+    const isActive = "customer-booking";
     return (
         <Fragment>
             <body>
@@ -66,4 +66,4 @@ const Booking = (props, { setAuth }) => {
     );
 }
 
-export default Booking;
+export default CustomerBooking;

@@ -7,9 +7,6 @@ import { Link } from "react-router-dom";
 
 const AdminSidebar = (props, { setAuth }) => {
 
-  // const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
-
   async function getName() {
     try {
 
@@ -20,17 +17,6 @@ const AdminSidebar = (props, { setAuth }) => {
         });
 
       const parseRes = await response.json();
-
-      // if (parseRes.user_type === "admin") {
-      //     setFirstName("Admin");
-      //     setLastName("");
-      // }
-
-      // else if (parseRes.user_type === "customer") {
-
-      //     setFirstName(parseRes.customer_firstname);
-      //     setLastName(parseRes.customer_lastname);
-      // }
 
     } catch (error) {
       console.error(error.message);
@@ -67,11 +53,11 @@ const AdminSidebar = (props, { setAuth }) => {
           <ul class="nav nav-pills flex-column mb-auto">
             <li className="nav-item">
               {
-                isActive === "profile" ?
+                isActive === "admin-profile" ?
 
-                  <Link to="/profile" className="nav-link active sidebutton link-dark">
+                  <Link to="/admin-profile" className="nav-link active sidebutton link-dark">
                     Profile
-                  </Link> : <Link to="/profile" className="nav-link sidebutton link-dark">
+                  </Link> : <Link to="/admin-profile" className="nav-link sidebutton link-dark">
                     Profile
                   </Link>
               }
@@ -80,11 +66,11 @@ const AdminSidebar = (props, { setAuth }) => {
 
             <li className="nav-item">
               {
-                isActive === "customer" ?
+                isActive === "admin-customer" ?
 
-                  <Link to="/customer" className="nav-link active sidebutton link-dark">
+                  <Link to="/admin-customer" className="nav-link active sidebutton link-dark">
                     Customers
-                  </Link> : <Link to="/customer" className="nav-link sidebutton link-dark">
+                  </Link> : <Link to="/admin-customer" className="nav-link sidebutton link-dark">
                     Customers
                   </Link>
               }
@@ -93,11 +79,11 @@ const AdminSidebar = (props, { setAuth }) => {
 
             <li className="nav-item">
               {
-                isActive === "tutor" ?
+                isActive === "admin-tutor" ?
 
-                  <Link to="/tutor" className="nav-link active sidebutton link-dark">
+                  <Link to="/admin-tutor" className="nav-link active sidebutton link-dark">
                     Tutors
-                  </Link> : <Link to="/tutor" className="nav-link sidebutton link-dark">
+                  </Link> : <Link to="/admin-tutor" className="nav-link sidebutton link-dark">
                     Tutors
                   </Link>
 
@@ -108,13 +94,13 @@ const AdminSidebar = (props, { setAuth }) => {
 
             <li className="nav-item">
               {
-                isActive === "category" ?
+                isActive === "admin-category" ?
 
-                  <Link to="/category" className="nav-link active sidebutton link-dark">
+                  <Link to="/admin-category" className="nav-link active sidebutton link-dark">
                     Category
                   </Link> : 
                   
-                  <Link to="/category" className="nav-link sidebutton link-dark">
+                  <Link to="/admin-category" className="nav-link sidebutton link-dark">
                     Category
                   </Link>
               }
@@ -123,13 +109,13 @@ const AdminSidebar = (props, { setAuth }) => {
 
             <li className="nav-item">
               {
-                isActive === "subject" ?
+                isActive === "admin-subject" ?
 
-                  <Link to="/subject" className="nav-link active sidebutton link-dark">
+                  <Link to="/admin-subject" className="nav-link active sidebutton link-dark">
                     Subject
                   </Link> : 
                   
-                  <Link to="/subject" className="nav-link sidebutton link-dark">
+                  <Link to="/admin-subject" className="nav-link sidebutton link-dark">
                     Subject
                   </Link>
               }
@@ -138,11 +124,11 @@ const AdminSidebar = (props, { setAuth }) => {
 
             <li className="nav-item">
               {
-                isActive === "slot" ?
+                isActive === "admin-slot" ?
 
-                  <Link to="/slot" className="nav-link active sidebutton link-dark">
+                  <Link to="/admin-slot" className="nav-link active sidebutton link-dark">
                     Slot
-                  </Link> : <Link to="/slot" className="nav-link sidebutton link-dark">
+                  </Link> : <Link to="/admin-slot" className="nav-link sidebutton link-dark">
                     Slot
                   </Link>
               }
@@ -151,11 +137,11 @@ const AdminSidebar = (props, { setAuth }) => {
             
             <li className="nav-item">
               {
-                isActive === "session" ?
+                isActive === "admin-session" ?
 
-                  <Link to="/session" className="nav-link active sidebutton link-dark">
+                  <Link to="/admin-session" className="nav-link active sidebutton link-dark">
                     Session
-                  </Link> : <Link to="/session" className="nav-link sidebutton link-dark">
+                  </Link> : <Link to="/admin-session" className="nav-link sidebutton link-dark">
                     Session
                   </Link>
               }
@@ -166,11 +152,11 @@ const AdminSidebar = (props, { setAuth }) => {
             
             <li className="nav-item">
               {
-                isActive === "booking" ?
+                isActive === "admin-booking" ?
 
-                  <Link to="/booking" className="nav-link active sidebutton link-dark">
+                  <Link to="/admin-booking" className="nav-link active sidebutton link-dark">
                     Booking
-                  </Link> : <Link to="/booking" className="nav-link sidebutton link-dark">
+                  </Link> : <Link to="/admin-booking" className="nav-link sidebutton link-dark">
                     Booking
                   </Link>
               }
@@ -179,11 +165,11 @@ const AdminSidebar = (props, { setAuth }) => {
          
             <li className="nav-item">
               {
-                isActive === "reports" ?
+                isActive === "admin-reports" ?
 
-                  <Link to="/reports" className="nav-link active sidebutton link-dark">
+                  <Link to="/admin-reports" className="nav-link active sidebutton link-dark">
                     Reports
-                  </Link> : <Link to="/reports" className="nav-link sidebutton link-dark">
+                  </Link> : <Link to="/admin-reports" className="nav-link sidebutton link-dark">
                     Reports
                   </Link>
               }
@@ -196,9 +182,6 @@ const AdminSidebar = (props, { setAuth }) => {
         </div>
 
       </aside>
-
-
-
 
     </Fragment>
   );

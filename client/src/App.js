@@ -17,9 +17,25 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
 import Landing from './components/landingPage/Landing';
-import AdminDashboard from './components/adminPanel/AdminDashboard';
-import Customer from './components/adminPanel/Customer';
-import Tutor from './components/adminPanel/Tutor';
+
+// Importing Admin Components
+
+import AdminProfile from './components/adminPanel/AdminDashboard';
+import AdminCustomer from './components/adminPanel/Customer';
+import AdminTutor from './components/adminPanel/Tutor';
+import AdminCategory from './components/adminPanel/Category';
+import AdminSubject from './components/adminPanel/Subject';
+import AdminSlot from './components/adminPanel/Slot';
+import AdminSession from './components/adminPanel/Session';
+import AdminBooking from './components/adminPanel/Booking';
+import AdminReports from './components/adminPanel/Reports';
+
+// Importing Customer Components
+
+import CustomerProfile from './components/customerPanel/CustomerDashboard';
+import CustomerSession from './components/customerPanel/Session';
+import CustomerBooking from './components/customerPanel/Booking';
+import CustomerCard from './components/customerPanel/Card';
 
 
 toast.configure();
@@ -64,22 +80,48 @@ async function isAuth()
 
         
           <Routes>
+
+          {/* Common Routes */}
+
           <Route exact path="/" element = { isAuthenticated ? (<Navigate to ="/"/>) : (<Landing setAuth={!setAuth} />)}/>
 
           <Route exact path="/login" element = { !isAuthenticated ? (<Login setAuth={setAuth} /> ) : (<Navigate to ="/dashboard"/>)}/>
+
 
           <Route exact path="/register" element = { !isAuthenticated ? (<Register setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
 
           <Route exact path="/dashboard" element = { isAuthenticated ? (<Dashboard setAuth={setAuth} />) :(<Navigate to ="/login"/>)}/>
 
-          <Route exact path="/profile" element = { !isAuthenticated ? (<AdminDashboard setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+          {/* Admin Routes */}
 
-          <Route exact path="/customer" element = { !isAuthenticated ? (<Customer setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+          <Route exact path="/admin-profile" element = { isAuthenticated ? (<AdminProfile setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
 
-          <Route exact path="/tutor" element = { !isAuthenticated ? (<Tutor setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+          <Route exact path="/admin-customer" element = { isAuthenticated ? (<AdminCustomer setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+
+          <Route exact path="/admin-tutor" element = { isAuthenticated ? (<AdminTutor setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+
+          <Route exact path="/admin-subject" element = { isAuthenticated ? (<AdminSubject setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+
+          <Route exact path="/admin-category" element = { isAuthenticated ? (<AdminCategory setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+
+          <Route exact path="/admin-slot" element = { isAuthenticated ? (<AdminSlot setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+
+          <Route exact path="/admin-session" element = { isAuthenticated ? (<AdminSession setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+          
+          <Route exact path="/admin-booking" element = { isAuthenticated ? (<AdminBooking setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+
+          <Route exact path="/admin-reports" element = { isAuthenticated ? (<AdminReports setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+
+          {/* Customer Routes */}
+
+          <Route exact path="/customer-profile" element = { isAuthenticated ? (<CustomerProfile setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+
+          <Route exact path="/customer-session" element = { isAuthenticated ? (<CustomerSession setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+          
+          <Route exact path="/customer-booking" element = { isAuthenticated ? (<CustomerBooking setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+
+          <Route exact path="/customer-card" element = { isAuthenticated ? (<CustomerCard setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
        
-
-
           </Routes>
        
         

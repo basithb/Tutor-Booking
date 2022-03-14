@@ -5,15 +5,9 @@ import AdminDashboard from "./adminPanel/AdminDashboard";
 import TutorDashboard from "./tutorPanel/TutorDashboard";
 import CustomerDashboard from "./customerPanel/CustomerDashboard";
 
-
 const Dashboard = ({ setAuth }) => {
 
     //Displaying states
-    const [name, setName] = useState("")
-
-
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
     const [user_type, setUserType] = useState("");
 
     async function getName() {
@@ -25,29 +19,8 @@ const Dashboard = ({ setAuth }) => {
                     headers: { token: localStorage.token }
                 });
 
-            const parseRes = await response.json();
-
-            setName(parseRes.user_name);
-            console.log(parseRes);
-            setUserType(parseRes.user_type);
-
-
-            if (parseRes.user_type === "admin") {
-                setFirstName("Admin");
-                setLastName("Dashboard");
-            }
-
-            else if (parseRes.user_type === "customer") {
-
-                setFirstName(parseRes.customer_firstname);
-                setLastName(parseRes.customer_lastname);
-            }
-
-            else if (parseRes.user_type === "tutor") {
-
-                setFirstName(parseRes.tutor_firstname);
-                setLastName(parseRes.tutor_lastname);
-            }
+            const parseRes = await response.json();       
+            setUserType(parseRes.user_type);               
 
         } catch (error) {
             console.error(error.message);
@@ -75,13 +48,13 @@ const Dashboard = ({ setAuth }) => {
             {/* Log Out functionality works properly with the log out button below */}
 
             {/* <h1>Dashboard</h1>
-            <h3>Hello {name}</h3>
-            <button className="btn btn-primary" onClick={event => logout(event)}>Log Out</button> */}
+            <h3>Hello {name}</h3> */}
+            {/* <button className="btn btn-primary" onClick={event => logout(event)}>Log Out</button> */}
 
             {/* Actual Logic */}
 
             {  
-                user_type === "admin" ? <AdminDashboard /> : user_type === "customer" ? <CustomerDashboard /> : <TutorDashboard />
+                user_type === "admin" ? <AdminDashboard setAuth={setAuth}/> : user_type === "customer" ? <CustomerDashboard /> : <TutorDashboard />
             }
 
 

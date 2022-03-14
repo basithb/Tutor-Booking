@@ -7,14 +7,14 @@ import AdminSidebar from "./AdminSidebar";
 import { Link } from "react-router-dom";
 import AdminNavbar from "./AdminNavbar";
 
-const Session = (props, { setAuth }) => {
+const AdminSession = (props, { setAuth }) => {
     try {
 
     } catch (error) {
         console.error(error.message);
     }
 
-    const isActive = "session";
+    const isActive = "admin-session";
     return (
         <Fragment>
             <body>
@@ -24,7 +24,6 @@ const Session = (props, { setAuth }) => {
                 <main className="main-content position-relative border-radius-lg">
                     <div className="container-fluid py-4">
                         <button type="button" className="btn btn-success btn-add-session" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add Session</button>
-
 
 
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -97,9 +96,6 @@ const Session = (props, { setAuth }) => {
                         </div>
 
 
-
-
-
                         <div className="row">
 
                             <div class="col-lg-5 col-md-7 col-sm-12 col-xs-12">
@@ -136,4 +132,4 @@ const Session = (props, { setAuth }) => {
     );
 }
 
-export default Session;
+export default AdminSession;

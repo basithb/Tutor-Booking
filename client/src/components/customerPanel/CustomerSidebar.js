@@ -52,11 +52,11 @@ const CustomerSidebar = (props, { setAuth }) => {
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
                             {
-                                isActive === "profile" ?
+                                isActive === "customer-profile" ?
 
-                                    <Link to="/profile" className="nav-link active sidebutton link-dark">
+                                    <Link to="/customer-profile" className="nav-link active sidebutton link-dark">
                                         Profile
-                                    </Link> : <Link to="/profile" className="nav-link sidebutton link-dark">
+                                    </Link> : <Link to="/customer-profile" className="nav-link sidebutton link-dark">
                                         Profile
                                     </Link>
                             }
@@ -64,11 +64,11 @@ const CustomerSidebar = (props, { setAuth }) => {
                         </li>
                         <li class="nav-item">
                             {
-                                isActive === "session" ?
+                                isActive === "customer-session" ?
 
-                                    <Link to="/session" className="nav-link active sidebutton link-dark">
+                                    <Link to="/customer-session" className="nav-link active sidebutton link-dark">
                                         Find Sessions
-                                    </Link> : <Link to="/session" className="nav-link sidebutton link-dark">
+                                    </Link> : <Link to="/customer-session" className="nav-link sidebutton link-dark">
                                         Find Sessions
                                     </Link>
                             }
@@ -76,11 +76,11 @@ const CustomerSidebar = (props, { setAuth }) => {
                         <li>
 
                              {
-                                isActive === "booking" ?
+                                isActive === "customer-booking" ?
 
-                                    <Link to="/booking" className="nav-link active sidebutton link-dark">
+                                    <Link to="/customer-booking" className="nav-link active sidebutton link-dark">
                                        Bookings
-                                    </Link> : <Link to="/booking" className="nav-link sidebutton link-dark">
+                                    </Link> : <Link to="/customer-booking" className="nav-link sidebutton link-dark">
                                        Bookings
                                     </Link>
                             }
@@ -88,11 +88,11 @@ const CustomerSidebar = (props, { setAuth }) => {
                         <li>
                             
                             {
-                                isActive === "card" ?
+                                isActive === "customer-card" ?
 
-                                    <Link to="/card" className="nav-link active sidebutton link-dark">
+                                    <Link to="/customer-card" className="nav-link active sidebutton link-dark">
                                         Add Card
-                                    </Link> : <Link to="/card" className="nav-link sidebutton link-dark">
+                                    </Link> : <Link to="/customer-card" className="nav-link sidebutton link-dark">
                                         Add Card
                                     </Link>
                             }

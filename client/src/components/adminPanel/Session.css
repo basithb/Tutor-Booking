@@ -8,6 +8,10 @@
     font-size: x-large;
 }
 
+.card-session-category-text{
+    margin-left: 0.1rem;
+}
+
 .btn-delete-session{
     border-radius: 2rem;
     margin-left: 1rem;
@@ -62,6 +66,7 @@
 .select-categoryEducationLevel, .select-slotStartTime, .select-tutorName, .select-subjectName{
     border-radius: 1rem;
 }
+
 
 
 

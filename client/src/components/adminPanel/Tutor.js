@@ -7,7 +7,7 @@ import AdminSidebar from "./AdminSidebar";
 import { Link } from "react-router-dom";
 import AdminNavbar from "./AdminNavbar";
 
-const Tutor = (props, { setAuth }) => {
+const AdminTutor = (props, { setAuth }) => {
 
     try {
 
@@ -15,7 +15,7 @@ const Tutor = (props, { setAuth }) => {
         console.error(error.message);
     }
 
-    const isActive = "tutor";
+    const isActive = "admin-tutor";
 
     return (
         <Fragment>
@@ -180,12 +180,8 @@ const Tutor = (props, { setAuth }) => {
                         </div>
 
                     </div>
-
-
                     
                 </main>
-
-
 
 
             </body>
@@ -194,4 +190,4 @@ const Tutor = (props, { setAuth }) => {
     );
 }
 
-export default Tutor;
+export default AdminTutor;

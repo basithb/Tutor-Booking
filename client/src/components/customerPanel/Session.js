@@ -7,14 +7,14 @@ import CustomerSidebar from "./CustomerSidebar";
 import { Link } from "react-router-dom";
 import CustomerNavbar from "./CustomerNavbar";
 
-const Session = (props, { setAuth }) => {
+const CustomerSession = (props, { setAuth }) => {
     try {
 
     } catch (error) {
         console.error(error.message);
     }
 
-    const isActive = "session";
+    const isActive = "customer-session";
     return (
         <Fragment>
             <body>
@@ -60,4 +60,4 @@ const Session = (props, { setAuth }) => {
     );
 }
 
-export default Session;
+export default CustomerSession;

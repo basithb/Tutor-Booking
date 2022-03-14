@@ -7,14 +7,14 @@ import AdminSidebar from "./AdminSidebar";
 import { Link } from "react-router-dom";
 import AdminNavbar from "./AdminNavbar";
 
-const Category = (props, { setAuth }) => {
+const AdminCategory = (props, { setAuth }) => {
     try {
 
     } catch (error) {
         console.error(error.message);
     }
 
-    const isActive = "category";
+    const isActive = "admin-category";
 
     return (
         <Fragment>
@@ -47,11 +47,11 @@ const Category = (props, { setAuth }) => {
                                                 <form >
                                                     <div className="modal-body">
                                                         <div className="col-md-12 mb-4">
-                                                                <div className="form-floating">
-                                                                    <input type="text" name="categoryEducationLevel" className="form-control input-categoryEducationLevel" id="floatingcategoryEducationLevel" required />
-                                                                    <label for="floatingcategoryEducationLevel">Education Level</label>
-                                                                </div>
+                                                            <div className="form-floating">
+                                                                <input type="text" name="categoryEducationLevel" className="form-control input-categoryEducationLevel" id="floatingcategoryEducationLevel" required />
+                                                                <label for="floatingcategoryEducationLevel">Education Level</label>
                                                             </div>
+                                                        </div>
 
                                                         <div className="add-tutor-done-div">
                                                             <button className="btn btn-success add-tutor-done-button">Done</button>
@@ -109,12 +109,6 @@ const Category = (props, { setAuth }) => {
             </body>
         </Fragment>
     )
-
-
-
-
-
-
 }
 
-export default Category;
+export default AdminCategory;

@@ -1,0 +1,70 @@
+.card-credit-card{
+    background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/card-visa.jpg');
+}
+
+.card-customerCard-header{
+    margin-bottom: 1.25rem ;
+    border-radius: 1rem !important;
+}
+.card-customerCard-header-text{
+    margin: 0;
+    display: inline-block;
+    font-size: x-large;
+}
+
+.card-customerCard{
+    border-radius: 1rem !important;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.185)!important;
+}
+
+.btn-add-customerCard{
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+
+.add-customerCard-done-div{
+    text-align: center;
+    }
+    
+.add-customerCard-done-button{
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    border-radius: 1.5rem;
+    font-weight: bold;
+}
+
+.input-customerCardNumber, .input-cardHolderName, .input-cardExpiryDate{
+    border-radius: 1rem;
+}
+
+.modal-title-customerCard{
+    text-align: center;
+    margin-left: auto;
+}
+
+.bg-customerCard-gradient-dark{
+    background-image: linear-gradient(310deg, #212229 0%, #212529 100%);
+}
+
+.customerCard-mask{
+position: absolute;
+background-size: cover;
+background-position: center center;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+opacity: 0.8;
+border-radius: 1rem;
+}
+
+
+
+
+
+
+  

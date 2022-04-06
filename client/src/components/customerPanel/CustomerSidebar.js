@@ -62,6 +62,20 @@ const CustomerSidebar = (props, { setAuth }) => {
                             }
 
                         </li>
+
+                        <li>
+
+                            {
+                                isActive === "customer-card" ?
+
+                                    <Link to="/customer-card" className="nav-link active sidebutton link-dark">
+                                        Add Card
+                                    </Link> : <Link to="/customer-card" className="nav-link sidebutton link-dark">
+                                        Add Card
+                                    </Link>
+                            }
+                        </li>
+
                         <li class="nav-item">
                             {
                                 isActive === "customer-session" ?
@@ -75,28 +89,17 @@ const CustomerSidebar = (props, { setAuth }) => {
                         </li>
                         <li>
 
-                             {
+                            {
                                 isActive === "customer-booking" ?
 
                                     <Link to="/customer-booking" className="nav-link active sidebutton link-dark">
-                                       Bookings
+                                        Bookings
                                     </Link> : <Link to="/customer-booking" className="nav-link sidebutton link-dark">
-                                       Bookings
+                                        Bookings
                                     </Link>
                             }
                         </li>
-                        <li>
-                            
-                            {
-                                isActive === "customer-card" ?
 
-                                    <Link to="/customer-card" className="nav-link active sidebutton link-dark">
-                                        Add Card
-                                    </Link> : <Link to="/customer-card" className="nav-link sidebutton link-dark">
-                                        Add Card
-                                    </Link>
-                            }
-                        </li>
                     </ul>
 
                     <hr class="hr-customer-logout" />

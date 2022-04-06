@@ -34,6 +34,8 @@ const CustomerSession = (props, { setAuth }) => {
                                             <h6 className="text-uppercase card-session-slotTimeStart-text">07:30</h6>
                                             <span class="card-session-dot fw-bold">·</span>
                                             <h6 className="text-uppercase card-session-tutorName-text">Naval Ravikant</h6>
+                                            <h6 className="text-uppercase card-booking-cost-text">500 </h6>
+                                            <h6 className="text-uppercase card-booking-rupee-symbol">₹</h6>
                                         </div>
 
                                         <h6 className="text-uppercase card-session-header-text">Human Psychology</h6>

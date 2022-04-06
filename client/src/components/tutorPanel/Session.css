@@ -1,0 +1,77 @@
+.card-session-header{
+    margin-bottom: 1.25rem ;
+    border-radius: 1rem !important;
+}
+.card-session-header-text{
+    margin: 0;
+    display: inline-block;
+    font-size: x-large;
+}
+
+.card-session-category-text{
+    margin-left: 0.1rem;
+}
+
+.btn-delete-session{
+    border-radius: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+
+.card-session{
+    border-radius: 1rem !important;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.185)!important;
+}
+
+
+.card-session-tutorName-text{
+    display: inline-block;
+
+}
+
+.card-session-slotDateStart-text{
+    display: inline-block;
+}
+
+.card-session-slotTimeStart-text{
+    display: inline-block;
+}
+
+.card-session-dot{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.btn-add-session{
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+.add-session-done-div{
+    text-align: center;
+    }
+    
+.add-session-done-button{
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    border-radius: 1.5rem;
+    font-weight: bold;
+}
+
+.select-categoryEducationLevel, .select-slotStartTime, .select-tutorName, .select-subjectName{
+    border-radius: 1rem;
+}
+
+
+
+
+
+
+
+
+  

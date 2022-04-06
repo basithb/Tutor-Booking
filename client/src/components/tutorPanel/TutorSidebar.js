@@ -52,33 +52,79 @@ const TutorSidebar = (props, { setAuth }) => {
                     <hr />
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active link-dark">
-                                Profile
-                            </a>
+                            {
+                                isActive === "tutor-profile" ?
+
+                                    <Link to="/tutor-profile" className="nav-link active sidebutton link-dark">
+                                        Profile
+                                    </Link> : <Link to="/tutor-profile" className="nav-link sidebutton link-dark">
+                                        Profile
+                                    </Link>
+                            }
+
                         </li>
+
                         <li class="nav-item">
-                            <a href="#" class="nav-link  link-dark">
-                                Sessions
-                                 {/* Note: Sessions listed should be specific to that particular tutor, add session option to be included as well */}
-                            </a>
+                            {
+                                isActive === "tutor-slot" ?
+
+                                    <Link to="/tutor-slot" className="nav-link active sidebutton link-dark">
+                                        Slot
+                                    </Link> : <Link to="/tutor-slot" className="nav-link sidebutton link-dark">
+                                        Slot
+                                    </Link>
+                            }
+
                         </li>
-                        <li>
-                            <a href="#" class="nav-link link-dark">
-                                Slots
-                            </a>
+
+
+                        <li class="nav-item">
+                            {
+                                isActive === "tutor-session" ?
+
+                                    <Link to="/tutor-session" className="nav-link active sidebutton link-dark">
+                                        Session
+                                    </Link> : <Link to="/tutor-session" className="nav-link sidebutton link-dark">
+                                        Session
+                                    </Link>
+
+
+                            }
+
+                            {/* Note: Sessions listed should be specific to that particular tutor, add session option to be included as well */}
                         </li>
-                        <li>
-                            <a href="#" class="nav-link link-dark">
-                                Bookings
-                                {/* Note: Customer bookings should be specific to that particular tutor */}
-                            </a>
+
+
+                        <li class="nav-item">
+                            {
+                                isActive === "tutor-booking" ?
+
+                                    <Link to="/tutor-booking" className="nav-link active sidebutton link-dark">
+                                        Booking
+                                    </Link> : <Link to="/tutor-booking" className="nav-link sidebutton link-dark">
+                                        Booking
+                                    </Link>
+                            }
+
+
+                            {/* Note: Customer bookings should be specific to that particular tutor */}
                         </li>
-                        <li>
-                            <a href="#" class="nav-link link-dark">
-                                Reports
-                                {/* Note: Reports generated for a particular tutor*/}
-                            </a>
+
+
+                        <li class="nav-item">
+                            {
+                                isActive === "tutor-reports" ?
+
+                                    <Link to="/tutor-reports" className="nav-link active sidebutton link-dark">
+                                        Reports
+                                    </Link> : <Link to="/tutor-reports" className="nav-link sidebutton link-dark">
+                                        Reports
+                                    </Link>
+                            }
+
+                            {/* Note: Reports generated for a particular tutor*/}
                         </li>
+
                     </ul>
 
                     <hr class="hr-tutor-logout" />

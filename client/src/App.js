@@ -37,6 +37,14 @@ import CustomerSession from './components/customerPanel/Session';
 import CustomerBooking from './components/customerPanel/Booking';
 import CustomerCard from './components/customerPanel/Card';
 
+//Importing Tutor Components
+
+import TutorProfile from './components/tutorPanel/TutorDashboard';
+import TutorSlot from './components/tutorPanel/Slot';
+import TutorSession from './components/tutorPanel/Session';
+import TutorBooking from './components/tutorPanel/Booking';
+import TutorReports from './components/tutorPanel/Reports';
+
 
 toast.configure();
 
@@ -92,6 +100,7 @@ async function isAuth()
 
           <Route exact path="/dashboard" element = { isAuthenticated ? (<Dashboard setAuth={setAuth} />) :(<Navigate to ="/login"/>)}/>
 
+
           {/* Admin Routes */}
 
           <Route exact path="/admin-profile" element = { isAuthenticated ? (<AdminProfile setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
@@ -112,6 +121,7 @@ async function isAuth()
 
           <Route exact path="/admin-reports" element = { isAuthenticated ? (<AdminReports setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
 
+
           {/* Customer Routes */}
 
           <Route exact path="/customer-profile" element = { isAuthenticated ? (<CustomerProfile setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
@@ -121,6 +131,19 @@ async function isAuth()
           <Route exact path="/customer-booking" element = { isAuthenticated ? (<CustomerBooking setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
 
           <Route exact path="/customer-card" element = { isAuthenticated ? (<CustomerCard setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+
+
+          {/* Tutor Routes */}
+
+          <Route exact path="/tutor-profile" element = { isAuthenticated ? (<TutorProfile setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+          <Route exact path="/tutor-slot" element = { isAuthenticated ? (<TutorSlot setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+          <Route exact path="/tutor-session" element = { isAuthenticated ? (<TutorSession setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+          <Route exact path="/tutor-booking" element = { isAuthenticated ? (<TutorBooking setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+          <Route exact path="/tutor-reports" element = { isAuthenticated ? (<TutorReports setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+
+
+
+
        
           </Routes>
        

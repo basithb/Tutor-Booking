@@ -85,6 +85,13 @@ const AdminSession = (props, { setAuth }) => {
                                                 </div>
                                             </div>
 
+                                            <div className="col-md-12 mb-4">
+                                                <div className="form-floating">
+                                                    <input type="text" name="customerEditLastName" className="form-control input-customerEditLastName" id="floatingCustomerEditLastName" required />
+                                                    <label for="floatingEditLastName">Session Cost</label>
+                                                </div>
+                                            </div>
+
                                             <div className="add-session-done-div">
                                                 <button className="btn btn-success add-session-done-button">Done</button>
                                             </div>
@@ -107,6 +114,8 @@ const AdminSession = (props, { setAuth }) => {
                                             <h6 className="text-uppercase card-session-slotTimeStart-text">07:30</h6>
                                             <span class="card-session-dot fw-bold">·</span>
                                             <h6 className="text-uppercase card-session-tutorName-text">Naval Ravikant</h6>
+                                            <h6 className="text-uppercase card-booking-cost-text">500 </h6>
+                                            <h6 className="text-uppercase card-booking-rupee-symbol">₹</h6>
                                         </div>
 
                                         <h6 className="text-uppercase card-session-header-text">Human Psychology</h6>

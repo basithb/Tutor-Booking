@@ -5,7 +5,11 @@ const jwtGenerator = require("../utils/jwtGenerator");
 const validInfo = require("../middleware/validInfo");
 const authorization = require("../middleware/authorization");
 
-// Routes for Registering
+// ROUTES FOR REGISTRATION
+
+// **************************************************
+
+// 1. Customer Registration
 
 router.post("/customer-register", validInfo, async (req, res) => {
 
@@ -65,8 +69,76 @@ router.post("/customer-register", validInfo, async (req, res) => {
     
 });
 
+// **************************************************
 
-// Routes for Login
+// 2. Tutor Registration
+
+router.post("/tutor-register", validInfo, async (req, res) => {
+
+    try {
+     
+
+    // Steps for Register Route:
+
+    //1. Destructure the req.body (name, email, password, type, status)
+
+    const {tutorEmail, tutorPassword, tutorFirstName, tutorLastName, tutorStateName, tutorCityName } = req.body; // 'type' refers to 'user_type' with possible values of 'admin', 'tutor', or 'customer' AND 'status' refers to 'user_status' with possible values of 'active', or 'inactive'.
+
+    //2. Check if the user exists (if the user already exists, then throw an error)
+
+    const user = await pool.query("SELECT * FROM tbl_login WHERE user_email = $1", [
+        tutorEmail
+    ]);
+
+    if(user.rows.length !== 0 ){
+        return res.status(401).json("User already exists");
+    }
+
+
+    //3. Bcrypt the user password
+
+    const saltRounds = 10;
+    const salt  = await bcrypt.genSalt(saltRounds);
+
+    const bcryptPassword = await bcrypt.hash(tutorPassword, salt);
+
+    //4. Enter the new user into the database
+
+    let newUserLoginDetails = await pool.query(
+        "INSERT INTO tbl_login (user_name, user_email, user_password, user_type, user_status) VALUES ($1, $2, $3, 'tutor', 'active') RETURNING *", [tutorFirstName, tutorEmail, bcryptPassword]
+    )
+
+    const userID = newUserLoginDetails.rows[0].user_id;
+    
+
+    let newUserBasicDetails = await pool.query(
+        "INSERT INTO tbl_tutor (user_id,tutor_firstName, tutor_lastName, tutor_stateName, tutor_cityName) VALUES ($1, $2, $3, $4, $5) RETURNING *", [userID, tutorFirstName, tutorLastName, tutorStateName, tutorCityName]
+    )
+
+
+    // res.json(newUser.rows[0]); // This has been commented to call the res.json below to get the token; works similar to a return statement inside a function.
+
+    //5. Generating our JWT Token
+
+    // const token = jwtGenerator(newUserLoginDetails.rows[0].user_id);
+
+    //  res.json({token});
+
+    if(newUserBasicDetails){
+        res.json(true);
+    }
+
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Server Error");
+    }
+    
+});
+
+
+// **************************************************
+
+// ROUTES FOR LOGIN
 
 router.post("/login", validInfo, async (req, res) => {
     try {
@@ -111,7 +183,9 @@ router.post("/login", validInfo, async (req, res) => {
 
 });
 
-// Route for Verification/Authorization of JWT tokens 
+// **************************************************
+
+//  ROUTE FOR VERIFCATION/AUTHORIZATION OF JWT TOKENS 
 
 router.get("/verify", authorization , async ( req , res ) => {
 
@@ -125,5 +199,6 @@ try {
 }
 
 });
+
 
 module.exports = router;

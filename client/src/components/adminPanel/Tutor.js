@@ -9,18 +9,141 @@ import AdminNavbar from "./AdminNavbar";
 
 const AdminTutor = (props, { setAuth }) => {
 
-    try {
+    // // Collecting state from these forms
+    const [inputs, setInputs] = useState({
+        // Default values
+        tutorEmail: "",
+        tutorPassword: "",
+        tutorFirstName: "",
+        tutorLastName: "",
+        tutorStateName: "",
+        tutorCityName: "",
+    });
 
-    } catch (error) {
-        console.error(error.message);
+    // // Destructuring
+    const { tutorEmail, tutorPassword, tutorFirstName, tutorLastName, tutorStateName, tutorCityName } = inputs;
+
+    // //onChange() function to change default values from the inputs i.e email ,name, and password.
+
+    const onChange = (event) => {
+        setInputs({ ...inputs, [event.target.name]: event.target.value });
+    };
+
+  
+    const [data, setData] = useState([]);
+
+
+    //getTutorDetails() function to fetch details from tbl_tutor
+
+    async function getTutorDetails() {
+
+        try {
+
+            const response = await fetch("http://localhost:5000/fetch/tutor", {
+                method: "GET",
+                headers: { token: localStorage.token }
+            });
+
+            const parseRes = await response.json();
+
+            setData(parseRes);
+
+        } catch (err) {
+
+            console.error(err.message);
+
+        }
     }
+
+
+    //onSubmitForm() function to submit the inputs and register tutor to our RESTful API to get the JWT Token
+
+    const onSubmitForm = async (event) => {
+
+        event.preventDefault(); // by default on clicking the 'Submit' button the page refreshes but with the preventDefault() method; the page is prevented from refreshing. 
+
+        try {
+
+            const body = { tutorEmail, tutorPassword, tutorFirstName, tutorLastName, tutorStateName, tutorCityName };
+
+            // Creating a fetch request 
+            const response = await fetch(
+                "http://localhost:5000/auth/tutor-register",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify(body)
+                }
+            );
+
+            const parseRes = await response.json(); //parseResponse
+
+            if (parseRes) {
+                toast.success("Tutor Registration Successful!",{
+                    position: toast.POSITION.BOTTOM_RIGHT
+                });
+                window.location.reload(true);
+            }
+
+            else {
+                // setAuth(false);
+                toast.error(parseRes);
+            }
+
+            // localStorage.setItem("token", parseRes.token);
+
+            // setAuth(true);
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    //onTutorDeactivate() function to deactivate a tutor from tbl_tutor
+
+    async function onTutorDeactivate(tutor_id) {
+
+        try {
+
+            const body = { tutor_id };
+
+            const response = await fetch("http://localhost:5000/deactivate/tutor", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", token: localStorage.token },
+                body: JSON.stringify(body)
+            });
+
+            const parseRes = await response.json();
+
+
+            if (parseRes === true) {
+                toast.success("Action Successful!", {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                });
+                window.location.reload(true);
+              
+               
+            } else {
+                toast.error(parseRes);
+            }
+
+        } catch (err) {
+
+            console.error(err.message);
+
+        }
+    }
+
+    useEffect(() => {
+        getTutorDetails();
+    }, [0]);
 
     const isActive = "admin-tutor";
 
     return (
         <Fragment>
-
-            <body>
                 <PanelBackdrop />
                 <AdminNavbar />
                 <AdminSidebar setAuth={setAuth} isActive={isActive} />
@@ -46,20 +169,22 @@ const AdminTutor = (props, { setAuth }) => {
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
 
-                                                <form >
+                                                    <form onSubmit={onSubmitForm} >
                                                     <div className="modal-body">
                                                         <div className="row">
 
                                                             <div className="col-md-6 mb-4">
                                                                 <div className="form-floating">
-                                                                    <input type="text" name="tutorFirstName" className="form-control input-tutorFirstName" id="floatingTutorFirstName" required />
+                                                                    {/* <input type="text" name="tutorFirstName" className="form-control input-tutorFirstName" id="floatingTutorFirstName" required /> */}
+                                                                    <input type="text" name="tutorFirstName" className="form-control input-tutorFirstName" id="floatingTutorFirstName" value={tutorFirstName} onChange={(event) => onChange(event)} required />
                                                                     <label for="floatingFirstName">First Name</label>
                                                                 </div>
                                                             </div>
 
                                                             <div className="col-md-6 mb-4">
                                                                 <div className="form-floating">
-                                                                    <input type="text" name="tutorLastName" className="form-control input-tutorLastName" id="floatingTutorLastName" required />
+                                                                    {/* <input type="text" name="tutorLastName" className="form-control input-tutorLastName" id="floatingTutorLastName" required /> */}
+                                                                    <input type="text" name="tutorLastName" className="form-control input-tutorLastName" id="floatingTutorLastName" value={tutorLastName} onChange={(event) => onChange(event)} required />
                                                                     <label for="floatingLastName">Last Name</label>
                                                                 </div>
                                                             </div>
@@ -69,14 +194,16 @@ const AdminTutor = (props, { setAuth }) => {
                                                         <div className="row">
                                                             <div className="col-md-6 mb-4">
                                                                 <div className="form-floating">
-                                                                    <input type="text" name="tutorStateName" className="form-control input-tutorStateName" id="floatingTutorStateName" required />
+                                                                    {/* <input type="text" name="tutorStateName" className="form-control input-tutorStateName" id="floatingTutorStateName" required /> */}
+                                                                    <input type="text" name="tutorStateName" className="form-control input-tutorStateName" id="floatingTutorStateName" value={tutorStateName} onChange={(event) => onChange(event)} required />
                                                                     <label for="floatingStateName">State</label>
                                                                 </div>
                                                             </div>
 
                                                             <div className="col-md-6 mb-4">
                                                                 <div className="form-floating">
-                                                                    <input type="text" name="tutorCityName" className="form-control input-tutorCityName" id="floatingTutorCityName" required />
+                                                                    {/* <input type="text" name="tutorCityName" className="form-control input-tutorCityName" id="floatingTutorCityName" required /> */}
+                                                                    <input type="text" name="tutorCityName" className="form-control input-tutorCityName" id="floatingTutorCityName" value={tutorCityName} onChange={(event) => onChange(event)} required />
                                                                     <label for="floatingCityName">City</label>
                                                                 </div>
                                                             </div>
@@ -85,7 +212,9 @@ const AdminTutor = (props, { setAuth }) => {
 
                                                         <div className="col-md-12 mb-4">
                                                             <div className="form-floating ">
-                                                                <input type="email" name="tutorEmail" className="form-control input-tutorEmail" id="floatingTutorEmail"
+                                                                {/* <input type="email" name="tutorEmail" className="form-control input-tutorEmail" id="floatingTutorEmail" 
+                                                                    required /> */}
+                                                                <input type="email" name="tutorEmail" className="form-control input-tutorEmail" id="floatingTutorEmail" value={tutorEmail} onChange={(event) => onChange(event)}
                                                                     required />
                                                                 <label for="floatingEmail">Email ID</label>
                                                             </div>
@@ -94,7 +223,9 @@ const AdminTutor = (props, { setAuth }) => {
 
                                                         <div className="col-md-12 mb-4">
                                                             <div className="form-floating ">
-                                                                <input type="password" name="password" className="form-control input-tutorPassword" id="floatingTutorPassword"
+                                                                {/* <input type="password" name="password" className="form-control input-tutorPassword" id="floatingTutorPassword"
+                                                                    required /> */}
+                                                                <input type="password" name="tutorPassword" className="form-control input-tutorPassword" id="floatingTutorPassword" value={tutorPassword} onChange={(event) => onChange(event)}
                                                                     required />
                                                                 <label for="floatingPassword">Password</label>
                                                             </div>
@@ -115,9 +246,9 @@ const AdminTutor = (props, { setAuth }) => {
                                         <table class="table align-items-center mb-0">
                                             <thead>
                                                 <tr>
+                                                <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">S.No</th>
                                                     <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">First Name</th>
                                                     <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">Last Name</th>
-                                                    <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
                                                     <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">State</th>
                                                     <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">City</th>
                                                     <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
@@ -125,50 +256,30 @@ const AdminTutor = (props, { setAuth }) => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">Clifford</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">George</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">cliffy@gmail.com</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">Kerala</span>
-                                                    </td>
 
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">Kochi</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <button className="btn-danger btn btn-sm">Deactivate</button>
-                                                    </td>
-                                                </tr>
+                                            {
+                                                    data.map((item, index) => (
+                                                        <tr key={item.tutor_id}>
+                                                           <th class="align-middle text-center" scope="row">{index + 1}</th>
+                                                            <td class="align-middle text-center">{item.tutor_firstname}</td>
+                                                            <td class="align-middle text-center">{item.tutor_lastname}</td>
+                                                            <td class="align-middle text-center">{item.tutor_statename}</td>
+                                                            <td class="align-middle text-center">{item.tutor_cityname}</td>
+                                                            {
+                                                                item.tutor_status === "active" ?
+                                                                    <td class="align-middle text-center">
+                                                                        <button className="btn-danger btn btn-sm" onClick={() => onTutorDeactivate(item.tutor_id)} title="Deactivate Tutor">Deactivate</button>
+                                                                    </td>
+                                                                    :
+                                                                    <td class="align-middle text-center">
 
-                                                <tr>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">Allen</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">Joseph</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">allen@gmail.com</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">Kerala</span>
-                                                    </td>
+                                                                        <button className="btn-success btn btn-sm" onClick={() => onTutorDeactivate(item.tutor_id)} title="Activate Tutor ">Activate</button>
+                                                                    </td>
+                                                            }
+                                                        </tr>
 
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">Kochi</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <button className="btn-success btn btn-sm">Activate</button>
-                                                    </td>
-
-                                                </tr>
+                                                    ))
+                                                }
 
                                             </tbody>
                                         </table>
@@ -180,14 +291,14 @@ const AdminTutor = (props, { setAuth }) => {
                         </div>
 
                     </div>
-                    
+
                 </main>
 
 
-            </body>
+          
 
         </Fragment>
     );
 }
 
-export default AdminTutor;
+export default AdminTutor; 

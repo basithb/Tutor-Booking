@@ -37,7 +37,7 @@ text-align: center;
   
 }
 
-.input-slotStartTime{
+.input-slotStartTime, .input-slotStartDate{
     border-radius: 1rem;
 }
 
@@ -54,4 +54,11 @@ text-align: center;
     border: solid #dc3545 3px;
 }
 
-  
+.input-slotStartDate:valid{
+    border: solid #198754 3px;
+}
+
+.input-slotStartDate:invalid{
+    border: solid #dc3545 3px;
+}
+

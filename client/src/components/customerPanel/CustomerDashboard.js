@@ -9,6 +9,52 @@ import CustomerSidebar from "./CustomerSidebar";
 
 const CustomerProfile = ({ setAuth }) => {
 
+    // Collecting state from these forms
+    const [inputs, setInputs] = useState({
+        // Default values
+        customerEditEmail: "",
+        customerEditPassword: "",
+        customerEditFirstName: "",
+        customerEditLastName: "",
+        customerEditStateName: "",
+        customerEditCityName: "",
+    });
+
+    // Destructuring
+    const { customerEditEmail, customerEditPassword, customerEditFirstName, customerEditLastName, customerEditStateName, customerEditCityName } = inputs;
+
+    //onChange() function to change default values from the inputs i.e email ,name, and password.
+
+    const onChange = (event) => {
+        setInputs({ ...inputs, [event.target.name]: event.target.value });
+    };
+
+
+    const onSubmitForm = async (event) => {
+
+        try {
+
+            const body = {customerEditFirstName, customerEditLastName, customerEditEmail, customerEditPassword, customerEditStateName, customerEditCityName };
+
+            // Creating a fetch request 
+            const response = await fetch(
+                "http://localhost:5000/update/customerDetails",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify(body)
+                }
+            );
+
+            const parseRes = await response.json(); //parseResponse
+
+        } catch (error) {
+            console.error(error.message);
+        }
+
+    }
 
     async function getName() {
         try {
@@ -30,6 +76,8 @@ const CustomerProfile = ({ setAuth }) => {
     useEffect(() => {
         getName();
     }, []);
+
+    
 
     const isActive = "customer-profile";
 
@@ -72,7 +120,7 @@ const CustomerProfile = ({ setAuth }) => {
                                 </div>
                                 <div class="card-body card-body-customer-profile">
 
-                                    <form>
+                                    <form onSubmit={onSubmitForm}>
                                         <div class="row">
                                             <h6 className=" text-muted mb-3">User Information</h6>
                                             <div className="col-md-6 mb-4">
@@ -102,7 +150,7 @@ const CustomerProfile = ({ setAuth }) => {
 
                                             <div className="col-md-6 mb-4">
                                                 <div className="form-floating">
-                                                    <input type="text" name="customerEditPassword" className="form-control input-customerEditPassword" id="floatingCustomerEditPassword" required />
+                                                    <input type="password" name="customerEditPassword" className="form-control input-customerEditPassword" id="floatingCustomerEditPassword" required />
                                                     <label for="floatingEditPassword">Password</label>
                                                 </div>
                                             </div>

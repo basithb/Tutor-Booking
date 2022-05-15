@@ -91,7 +91,7 @@ const Register = ({ setAuth }) => {
 
                                         <div className="col-md-6 mb-4">
                                             <div className="form-floating">
-                                                <input type="text" name="firstName" className="form-control input-firstName" value={firstName}id="floatingFirstName" onChange={(event) => onChange(event)} required/>
+                                                <input type="text" name="firstName" className="form-control input-firstName" value={firstName} id="floatingFirstName" onChange={(event) => onChange(event)} required/>
                                                 <label for="floatingFirstName">First Name</label>
                                             </div>
                                         </div>

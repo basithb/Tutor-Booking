@@ -9,11 +9,71 @@ import AdminNavbar from "./AdminNavbar";
 
 const AdminCustomer = (props, { setAuth }) => {
 
-    try {
+    const [data, setData] = useState([]);
 
-    } catch (error) {
-        console.error(error.message);
+
+    //getCustomerDetails() function to fetch details from tbl_customer
+
+    async function getCustomerDetails() {
+
+        try {
+
+            const response = await fetch("http://localhost:5000/fetch/customer", {
+                method: "GET",
+                headers: { token: localStorage.token }
+            });
+
+            const parseRes = await response.json();
+
+            setData(parseRes);
+
+        } catch (err) {
+
+            console.error(err.message);
+
+        }
     }
+
+
+    //onCustomerDeactivate() function to deactivate a customer from tbl_customer
+
+    async function onCustomerDeactivate(customer_id) {
+
+        try {
+
+            const body = { customer_id };
+
+            const response = await fetch("http://localhost:5000/deactivate/customer", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", token: localStorage.token },
+                body: JSON.stringify(body)
+            });
+
+            const parseRes = await response.json();
+
+
+            if (parseRes === true) {
+                toast.success("Action Successful!", {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                });
+                window.location.reload(true);
+              
+               
+            } else {
+                toast.error(parseRes);
+            }
+
+        } catch (err) {
+
+            console.error(err.message);
+
+        }
+    }
+
+
+    useEffect(() => {
+        getCustomerDetails();
+    }, [0]);
 
     const isActive = "admin-customer";
 
@@ -39,9 +99,9 @@ const AdminCustomer = (props, { setAuth }) => {
                                         <table class="table align-items-center mb-0">
                                             <thead>
                                                 <tr>
+                                                <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">S.No</th>
                                                     <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">First Name</th>
                                                     <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">Last Name</th>
-                                                    <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
                                                     <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">State</th>
                                                     <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">City</th>
                                                     <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
@@ -49,51 +109,31 @@ const AdminCustomer = (props, { setAuth }) => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">Clifford</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">George</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">cliffy@gmail.com</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">Kerala</span>
-                                                    </td>
 
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">Kochi</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <button className="btn-danger btn btn-sm">Deactivate</button>
-                                                    </td>
+                                            {
+                                                    data.map((item, index) => (
+                                                        <tr key={item.customer_id}>
+                                                           <th class="align-middle text-center" scope="row">{index + 1}</th>
+                                                            <td class="align-middle text-center">{item.customer_firstname}</td>
+                                                            <td class="align-middle text-center">{item.customer_lastname}</td>
+                                                            <td class="align-middle text-center">{item.customer_statename}</td>
+                                                            <td class="align-middle text-center">{item.customer_cityname}</td>
+                                                            {
+                                                                item.customer_status === "active" ?
+                                                                    <td class="align-middle text-center">
+                                                                        <button className="btn-danger btn btn-sm" onClick={() => onCustomerDeactivate(item.customer_id)} title="Deactivate Customer">Deactivate</button>
+                                                                    </td>
+                                                                    :
+                                                                    <td class="align-middle text-center">
 
-                                                </tr>
+                                                                        <button className="btn-success btn btn-sm" onClick={() => onCustomerDeactivate(item.customer_id)} title="Activate Customer ">Activate</button>
+                                                                    </td>
+                                                            }
+                                                        </tr>
 
-                                                <tr>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">Allen</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">Joseph</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">allen@gmail.com</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">Kerala</span>
-                                                    </td>
+                                                    ))
+                                                }
 
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">Kochi</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <button className="btn-success btn btn-sm">Activate</button>
-                                                    </td>
-
-                                                </tr>
 
                                             </tbody>
                                         </table>

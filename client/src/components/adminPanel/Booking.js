@@ -52,11 +52,28 @@ const AdminBooking = (props, { setAuth }) => {
                                                         <p class="text-xs font-weight-bold mb-0">Human Psychology</p>
                                                     </td>
                                                     <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">14-03-22 18:00</p>
+                                                        <p class="text-xs font-weight-bold mb-0">10-03-22 07:30</p>
                                                     </td>
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">₹</span>
                                                         <span class="text-secondary text-xs font-weight-bold">500</span>
+                                                    </td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="align-middle text-center">
+                                                        <p class="text-xs font-weight-bold mb-0">Allen</p>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <p class="text-xs font-weight-bold mb-0">Intro to Web Development</p>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <p class="text-xs font-weight-bold mb-0">17-05-22 08:30</p>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-secondary text-xs font-weight-bold">₹</span>
+                                                        <span class="text-secondary text-xs font-weight-bold">1500</span>
                                                     </td>
 
                                                 </tr>

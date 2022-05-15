@@ -55,7 +55,7 @@ const Dashboard = ({ setAuth }) => {
 
             {  
                 user_type === "admin" ? <AdminDashboard setAuth={setAuth}/> : user_type === "customer" ? <CustomerDashboard /> : <TutorDashboard />
-            }
+            } 
 
 
 

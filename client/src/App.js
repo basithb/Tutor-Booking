@@ -95,7 +95,6 @@ async function isAuth()
 
           <Route exact path="/login" element = { !isAuthenticated ? (<Login setAuth={setAuth} /> ) : (<Navigate to ="/dashboard"/>)}/>
 
-
           <Route exact path="/register" element = { !isAuthenticated ? (<Register setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
 
           <Route exact path="/dashboard" element = { isAuthenticated ? (<Dashboard setAuth={setAuth} />) :(<Navigate to ="/login"/>)}/>
@@ -105,15 +104,15 @@ async function isAuth()
 
           <Route exact path="/admin-profile" element = { isAuthenticated ? (<AdminProfile setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
 
-          <Route exact path="/admin-customer" element = { isAuthenticated ? (<AdminCustomer setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+          <Route exact path="/admin-customer" element = { isAuthenticated ? (<AdminCustomer setAuth={setAuth} />) : (<AdminProfile setAuth={setAuth}/>) }/>
 
-          <Route exact path="/admin-tutor" element = { isAuthenticated ? (<AdminTutor setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+          <Route exact path="/admin-tutor" element = { isAuthenticated ? (<AdminTutor setAuth={setAuth} />) : (<AdminProfile setAuth={setAuth}/>) }/>
 
-          <Route exact path="/admin-subject" element = { isAuthenticated ? (<AdminSubject setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+          <Route exact path="/admin-subject" element = { isAuthenticated ? (<AdminSubject setAuth={setAuth} />) : (<AdminProfile setAuth={setAuth}/>) }/>
 
-          <Route exact path="/admin-category" element = { isAuthenticated ? (<AdminCategory setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+          <Route exact path="/admin-category" element = { isAuthenticated ? (<AdminCategory setAuth={setAuth} />) : (<AdminProfile setAuth={setAuth}/>) }/>
 
-          <Route exact path="/admin-slot" element = { isAuthenticated ? (<AdminSlot setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
+          <Route exact path="/admin-slot" element = { isAuthenticated ? (<AdminSlot setAuth={setAuth} />) : (<AdminProfile setAuth={setAuth}/>) }/>
 
           <Route exact path="/admin-session" element = { isAuthenticated ? (<AdminSession setAuth={setAuth} />) : (<Navigate to ="/login"/>) }/>
           

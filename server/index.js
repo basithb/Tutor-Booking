@@ -16,6 +16,23 @@ app.use("/auth", require("./routes/jwtAuth"));
 
 app.use("/dashboard", require("./routes/dashboard")); 
 
+// Addition Route
+
+app.use("/add", require("./routes/add")); 
+
+// Updatation Route
+
+// app.use("/update", require("./routes/update")); 
+
+// Fetch Route
+
+app.use("/fetch", require("./routes/fetch")); 
+
+// Deactivation Route
+
+app.use("/deactivate", require("./routes/deactivate")); 
+
+
 app.listen(5000, () => {
     console.log("Server is running on Port 5000");
 });

@@ -9,286 +9,312 @@ import AdminNavbar from "./AdminNavbar";
 
 const AdminSession = (props, { setAuth }) => {
 
-   // // Collecting state from these forms
-   const [inputs, setInputs] = useState({
-    // Default values
-    slot_time: "",
-    slot_date: "",
-    subject_id: "",
-    category_id: "",
-    tutor_id:"",
-    session_price:""
+    // // Collecting state from these forms
+    const [inputs, setInputs] = useState({
+        // Default values
+        slot_time: "",
+        slot_date: "",
+        subject_id: "",
+        category_id: "",
+        tutor_id: "",
+        session_price: ""
 
-});
+    });
 
-function formatDateInput(stringDate){
-    var curr = new Date(stringDate);
-    curr.setDate(curr.getDate()+1);
-    var date = curr.toUTCString().substring(5,17);
-    return date;
-}
-
-// // Destructuring
-const { slot_time, slot_date, subject_id, category_id, tutor_id, session_price} = inputs;
-
-// //onChange() function to change default values from the inputs i.e email ,name, and password.
-
-const onChange = (event) => {
-    setInputs({ ...inputs, [event.target.name]: event.target.value });
-};
-
-const [sessionMaster,  setSessionMaster] = useState([]);
-const [sessionChild,  setSessionChild] = useState([]);
-const [slotTime, setSlotTime] = useState([]);
-const [slotDate, setSlotDate] = useState([]);
-const [subject, setSubject] = useState([]);
-const [category, setCategory] = useState([]);
-const [tutor, setTutor] = useState([]);
-
-
-//getSlotTimeDetails() function to fetch slot time details from tbl_slot
-
-async function getSlotTimeDetails() {
-
-    try {
-
-        const response = await fetch("http://localhost:5000/fetch/slot", {
-            method: "GET",
-            headers: { token: localStorage.token }
-        });
-
-        const parseRes = await response.json();
-
-        setSlotTime(parseRes);
-
-    } catch (err) {
-
-        console.error(err.message);
-
+    function formatDateInput(stringDate) {
+        var curr = new Date(stringDate);
+        curr.setDate(curr.getDate() + 1);
+        var date = curr.toUTCString().substring(5, 17);
+        return date;
     }
-}
 
-//getSlotDateDetails() function to fetch slot date details from tbl_slot
+    // // Destructuring
+    const { slot, subject_id, category_id, tutor_id, session_price } = inputs;
 
-async function getSlotDateDetails() {
+    // //onChange() function to change default values from the inputs i.e email ,name, and password.
 
-    try {
+    const onChange = (event) => {
+        setInputs({ ...inputs, [event.target.name]: event.target.value });
+    };
 
-        const response = await fetch("http://localhost:5000/fetch/slot", {
-            method: "GET",
-            headers: { token: localStorage.token }
-        });
+    const [sessionMaster, setSessionMaster] = useState([]);
+    const [sessionChild, setSessionChild] = useState([]);
+    const [sessionTotal, setTotalSession] = useState([]);
+    const [slotTime, setSlotTime] = useState([]);
+    const [slotDate, setSlotDate] = useState([]);
+    const [subject, setSubject] = useState([]);
+    const [category, setCategory] = useState([]);
+    const [tutor, setTutor] = useState([]);
 
-        const parseRes = await response.json();
 
-        setSlotDate(parseRes);
+    //getSlotTimeDetails() function to fetch slot time details from tbl_slot
 
-    } catch (err) {
+    async function getSlotTimeDetails() {
 
-        console.error(err.message);
+        try {
 
+            const response = await fetch("http://localhost:5000/fetch/slot", {
+                method: "GET",
+                headers: { token: localStorage.token }
+            });
+
+            const parseRes = await response.json();
+
+            setSlotTime(parseRes);
+
+        } catch (err) {
+
+            console.error(err.message);
+
+        }
     }
-}
 
-//getSessionMasterDetails() function to fetch details from tbl_session_master
+    //getSlotDateDetails() function to fetch slot date details from tbl_slot
 
-async function getSessionMasterDetails() {
+    async function getSlotDateDetails() {
 
-    try {
+        try {
 
-        const response = await fetch("http://localhost:5000/fetch/session-master", {
-            method: "GET",
-            headers: { token: localStorage.token }
-        });
+            const response = await fetch("http://localhost:5000/fetch/slot", {
+                method: "GET",
+                headers: { token: localStorage.token }
+            });
 
-        const parseRes = await response.json();
+            const parseRes = await response.json();
 
-        setSessionMaster(parseRes);
+            setSlotDate(parseRes);
 
-    } catch (err) {
+        } catch (err) {
 
-        console.error(err.message);
+            console.error(err.message);
 
+        }
     }
-}
 
-//getSessionChildDetails() function to fetch details from tbl_session_child
 
-async function getSessionChildDetails() {
+    //getTotalSessionDetails function to fetch details from tbl_session_master and tbl_session_child
 
-    try {
+    async function getTotalSessionDetails() {
 
-        const response = await fetch("http://localhost:5000/fetch/session-child", {
-            method: "GET",
-            headers: { token: localStorage.token }
-        });
+        try {
 
-        const parseRes = await response.json();
+            const response = await fetch("http://localhost:5000/fetch/session-total", {
+                method: "GET",
+                headers: { token: localStorage.token }
+            });
 
-        setSessionChild(parseRes);
+            const parseRes = await response.json();
 
-    } catch (err) {
+            setTotalSession(parseRes);
 
-        console.error(err.message);
+        } catch (err) {
 
+            console.error(err.message);
+
+        }
     }
-}
 
-//getCategoryDetails() function to fetch details from tbl_category
 
-async function getCategoryDetails() {
+    //getSessionMasterDetails() function to fetch details from tbl_session_master
 
-    try {
+    async function getSessionMasterDetails() {
 
-        const response = await fetch("http://localhost:5000/fetch/category", {
-            method: "GET",
-            headers: { token: localStorage.token }
-        });
+        try {
 
-        const parseRes = await response.json();
+            const response = await fetch("http://localhost:5000/fetch/session-master", {
+                method: "GET",
+                headers: { token: localStorage.token }
+            });
 
-        setCategory(parseRes);
+            const parseRes = await response.json();
 
-    } catch (error) {
+            setSessionMaster(parseRes);
 
-        console.error(error.message);
+        } catch (err) {
 
+            console.error(err.message);
+
+        }
     }
-}
 
-//getSubjectDetails() function to fetch details from tbl_subject
+    //getSessionChildDetails() function to fetch details from tbl_session_child
 
-async function getSubjectDetails() {
+    async function getSessionChildDetails() {
 
-    try {
+        try {
 
-        const response = await fetch("http://localhost:5000/fetch/subject", {
-            method: "GET",
-            headers: { token: localStorage.token }
-        });
+            const response = await fetch("http://localhost:5000/fetch/session-child", {
+                method: "GET",
+                headers: { token: localStorage.token }
+            });
 
-        const parseRes = await response.json();
+            const parseRes = await response.json();
 
-        setSubject(parseRes);
+            setSessionChild(parseRes);
 
-    } catch (error) {
+        } catch (err) {
 
-        console.error(error.message);
+            console.error(err.message);
 
+        }
     }
-}
 
-//getTutorDetails() function to fetch details from tbl_tutor
+    //getCategoryDetails() function to fetch details from tbl_category
 
-async function getTutorDetails() {
+    async function getCategoryDetails() {
 
-    try {
+        try {
 
-        const response = await fetch("http://localhost:5000/fetch/tutor", {
-            method: "GET",
-            headers: { token: localStorage.token }
-        });
+            const response = await fetch("http://localhost:5000/fetch/category", {
+                method: "GET",
+                headers: { token: localStorage.token }
+            });
 
-        const parseRes = await response.json();
+            const parseRes = await response.json();
 
-        setTutor(parseRes);
+            setCategory(parseRes);
 
-    } catch (error) {
+        } catch (error) {
 
-        console.error(error.message);
+            console.error(error.message);
 
+        }
     }
-}
+
+    //getSubjectDetails() function to fetch details from tbl_subject
+
+    async function getSubjectDetails() {
+
+        try {
+
+            const response = await fetch("http://localhost:5000/fetch/subject", {
+                method: "GET",
+                headers: { token: localStorage.token }
+            });
+
+            const parseRes = await response.json();
+
+            setSubject(parseRes);
+
+        } catch (error) {
+
+            console.error(error.message);
+
+        }
+    }
+
+    //getTutorDetails() function to fetch details from tbl_tutor
+
+    async function getTutorDetails() {
+
+        try {
+
+            const response = await fetch("http://localhost:5000/fetch/tutor", {
+                method: "GET",
+                headers: { token: localStorage.token }
+            });
+
+            const parseRes = await response.json();
+
+            setTutor(parseRes);
+
+        } catch (error) {
+
+            console.error(error.message);
+
+        }
+    }
 
 
-//onSubmitForm() function to add a new session to tbl_session_master
+    //onSubmitForm() function to add a new session to tbl_session_master
 
-const onSubmitForm = async (event) => {
+    const onSubmitForm = async (event) => {
 
-    event.preventDefault(); // by default on clicking the 'Submit' button the page refreshes but with the preventDefault() method; the page is prevented from refreshing. 
+        event.preventDefault(); // by default on clicking the 'Submit' button the page refreshes but with the preventDefault() method; the page is prevented from refreshing. 
 
-    try {
+        try {
 
-        const body = {  slot_time, slot_date, tutor_id, session_price, subject_id, category_id };
+            const body = { slot, tutor_id, session_price, subject_id, category_id };
 
-        // Creating a fetch request 
-        const response = await fetch(
-            "http://localhost:5000/add/session",
-            {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json",
-                    token: localStorage.token
-                },
-                body: JSON.stringify(body)
+            // Creating a fetch request 
+            const response = await fetch(
+                "http://localhost:5000/add/session",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json",
+                        token: localStorage.token
+                    },
+                    body: JSON.stringify(body)
+                }
+            );
+
+            const parseRes = await response.json(); //parseResponse
+
+            if (parseRes) {
+                toast.success("Session Addition Successful!", {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                });
+                window.location.reload(true);
             }
-        );
 
-        const parseRes = await response.json(); //parseResponse
+            else {
 
-        if (parseRes) {
-            toast.success("Session Addition Successful!", {
-                position: toast.POSITION.BOTTOM_RIGHT
-            });
-            window.location.reload(true);
+                toast.error(parseRes);
+            }
+
+        } catch (error) {
+            console.error(error.message);
         }
-
-        else {
-
-            toast.error(parseRes);
-        }
-
-    } catch (error) {
-        console.error(error.message);
     }
-}
 
 
-//onSessionDeactivate() function to deactivate a session from tbl_session_master
+    //onSessionDeactivate() function to deactivate a session from tbl_session_master
 
-async function onSessionDeactivate(session_master_id) {
+    async function onSessionDeactivate(session_master_id) {
 
-    try {
+        try {
 
-        const body = { session_master_id };
+            const body = { session_master_id };
 
-        const response = await fetch("http://localhost:5000/deactivate/session", {
-            method: "POST",
-            headers: { "Content-Type": "application/json", token: localStorage.token },
-            body: JSON.stringify(body)
-        });
-
-        const parseRes = await response.json();
-
-
-        if (parseRes === true) {
-            toast.success("Action Successful!", {
-                position: toast.POSITION.BOTTOM_RIGHT
+            const response = await fetch("http://localhost:5000/deactivate/session", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", token: localStorage.token },
+                body: JSON.stringify(body)
             });
-            window.location.reload(true);
+
+            const parseRes = await response.json();
 
 
-        } else {
-            toast.error(parseRes);
+            if (parseRes === true) {
+                toast.success("Action Successful!", {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                });
+                window.location.reload(true);
+
+
+            } else {
+                toast.error(parseRes);
+            }
+
+        } catch (err) {
+
+            console.error(err.message);
+
         }
-
-    } catch (err) {
-
-        console.error(err.message);
-
     }
-}
 
 
-useEffect(() => {
-    getTutorDetails();
-    getSlotTimeDetails();
-    getSlotDateDetails();
-    getSubjectDetails();
-    getCategoryDetails();
-    getSessionMasterDetails();
-    getSessionChildDetails();
-}, [0]);
+    useEffect(() => {
+        getTutorDetails();
+        getSlotTimeDetails();
+        getSlotDateDetails();
+        getSubjectDetails();
+        getCategoryDetails();
+        getSessionMasterDetails();
+        getSessionChildDetails();
+        getTotalSessionDetails();
+    }, [0]);
 
     const isActive = "admin-session";
     return (
@@ -313,51 +339,34 @@ useEffect(() => {
                                     <form onSubmit={onSubmitForm} >
                                         <div className="modal-body">
 
-                                        <div className="col-md-12 mb-4">
-                                                <div className="form-floating">
-                                                    <select name="slot_date" className="form-control select-slotStartTime" id="floatingslotStartTime" onChange={(event) => onChange(event)}  required >
-                                                        <option value="" disabled-selected hidden>Select Slot Date</option>
-                                                        {
-                                                                    slotDate.map((item, index) => (
-
-                                                                    <option key={item.slot_id} value={item.slot_id}>{formatDateInput(item.slot_date)}</option>
-
-                                                                    ))
-                                                                    }
-                                                    </select>
-
-                                                    <label for="floatingslotStartTime">Slot Time</label>
-                                                </div>
-                                            </div>
-
                                             <div className="col-md-12 mb-4">
                                                 <div className="form-floating">
-                                                    <select name="slot_time" className="form-control select-slotStartTime" id="floatingslotStartTime" onChange={(event) => onChange(event)}  required >
-                                                        <option value="" disabled-selected hidden>Select Slot Time</option>
+                                                    <select name="slot" className="form-control select-slotStartTime" id="floatingslotStartTime" onChange={(event) => onChange(event)} required >
+                                                        <option value="" disabled-selected hidden>Select Slot </option>
                                                         {
-                                                                    slotTime.map((item, index) => (
+                                                            slotDate.map((item, index) => (
 
-                                                                    <option key={item.slot_id} value={item.slot_id}>{item.slot_time}</option>
+                                                                <option key={item.slot_id} value={item.slot_id}>{formatDateInput(item.slot_date)}  {item.slot_time}</option>
 
-                                                                    ))
-                                                                    }
+                                                            ))
+                                                        }
                                                     </select>
 
-                                                    <label for="floatingslotStartTime">Slot Time</label>
+                                                    <label for="floatingslotStartTime">Slot</label>
                                                 </div>
                                             </div>
-
+                                
                                             <div className="col-md-12 mb-4">
                                                 <div className="form-floating">
-                                                    <select name="tutor_id" className="form-control select-tutorName" id="floatingtutorName" onChange={(event) => onChange(event)}  required >
+                                                    <select name="tutor_id" className="form-control select-tutorName" id="floatingtutorName" onChange={(event) => onChange(event)} required >
                                                         <option value="" disabled-selected hidden>Select Tutor</option>
                                                         {
-                                                                    tutor.map((item, index) => (
+                                                            tutor.map((item, index) => (
 
-                                                                    <option key={item.tutor_id} value={item.tutor_id}>{item.tutor_firstname}</option>
+                                                                <option key={item.tutor_id} value={item.tutor_id}>{item.tutor_firstname}</option>
 
-                                                                    ))
-                                                                    }
+                                                            ))
+                                                        }
                                                     </select>
 
                                                     <label for="floatingtutorName">Tutor</label>
@@ -366,15 +375,15 @@ useEffect(() => {
 
                                             <div className="col-md-12 mb-4">
                                                 <div className="form-floating">
-                                                    <select name="subject_id" className="form-control select-subjectName" id="floatingsubjectName" onChange={(event) => onChange(event)}  required >
+                                                    <select name="subject_id" className="form-control select-subjectName" id="floatingsubjectName" onChange={(event) => onChange(event)} required >
                                                         <option value="" disabled-selected hidden>Select Subject</option>
                                                         {
-                                                                    subject.map((item, index) => (
+                                                            subject.map((item, index) => (
 
-                                                                    <option key={item.subject_id} value={item.subject_id}>{item.subject_name}</option>
+                                                                <option key={item.subject_id} value={item.subject_id}>{item.subject_name}</option>
 
-                                                                    ))
-                                                                    }
+                                                            ))
+                                                        }
                                                     </select>
 
                                                     <label for="floatingsubjectName">Subject</label>
@@ -383,15 +392,15 @@ useEffect(() => {
 
                                             <div className="col-md-12 mb-4">
                                                 <div className="form-floating">
-                                                    <select name="category_id" className="form-control select-categoryEducationLevel" id="floatingcategoryEducationLevel" onChange={(event) => onChange(event)}  required >
+                                                    <select name="category_id" className="form-control select-categoryEducationLevel" id="floatingcategoryEducationLevel" onChange={(event) => onChange(event)} required >
                                                         <option value="" disabled-selected hidden>Select Education Level</option>
                                                         {
-                                                                    category.map((item, index) => (
+                                                            category.map((item, index) => (
 
-                                                                    <option key={item.category_id} value={item.category_id}>{item.category_name}</option>
+                                                                <option key={item.category_id} value={item.category_id}>{item.category_name}</option>
 
-                                                                    ))
-                                                                    }
+                                                            ))
+                                                        }
                                                     </select>
 
                                                     <label for="floatingcategoryEducationLevel">Category Name</label>
@@ -418,61 +427,42 @@ useEffect(() => {
 
                         <div className="row">
 
-                            <div class="col-lg-5 col-md-7 col-sm-12 col-xs-12">
-                                <div class="card card-session mb-4 pb-4">
-                                    <div class="card-header card-session-header pb-1">
-                                        <div className="card-session-slot-tutor-details">
-                                            <h6 className="text-uppercase card-session-slotDateStart-text">10-03-2022 </h6>
-                                            <span class="card-session-dot fw-bold">|</span>
-                                            <h6 className="text-uppercase card-session-slotTimeStart-text">07:30</h6>
-                                            <span class="card-session-dot fw-bold">·</span>
-                                            <h6 className="text-uppercase card-session-tutorName-text">Naval Ravikant</h6>
-                                            <h6 className="text-uppercase card-booking-cost-text">500 </h6>
-                                            <h6 className="text-uppercase card-booking-rupee-symbol">₹</h6>
-                                        </div>
+                            {
+                                sessionTotal.length === 0 ?
+                                    (<h4 className="text-align-center w-100 p-5">No Sessions Found.</h4>)
+                                    :
+                                    (
+                                        sessionTotal.map((item, index) => (
 
-                                        <h6 className="text-uppercase card-session-header-text">Human Psychology</h6>
-                                        <h6 className="text-uppercase text-muted card-session-category-text">High School</h6>
+                                            <div class="col-lg-5 col-md-7 col-sm-12 col-xs-12">
+                                                <div class="card card-session mb-4 pb-4">
+                                                    <div class="card-header card-session-header pb-1">
+                                                        <div className="card-session-slot-tutor-details">
+                                                            <h6 className="text-uppercase card-session-slotDateStart-text">{formatDateInput(item.slot_date)}  </h6>
+                                                            <span class="card-session-dot fw-bold">|</span>
+                                                            <h6 className="text-uppercase card-session-slotTimeStart-text">{item.slot_time}</h6>
+                                                            <span class="card-session-dot fw-bold">·</span>
+                                                            <h6 className="text-uppercase card-session-tutorName-text">{item.tutor_firstname} {item.tutor_lastname}</h6>
+                                                            <h6 className="text-uppercase card-booking-cost-text">{item.session_price} </h6>
+                                                            <h6 className="text-uppercase card-booking-rupee-symbol">₹</h6>
+                                                        </div>
 
-
-                                    </div>
-
-                                    <div class="card-body px-0 pt-0 pb-0 d-grid">
-                                        <button type="button" class="btn-delete-session btn btm-sm btn-danger pt-2 pb-2">
-                                            Delete Session
-                                        </button>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="col-lg-5 col-md-7 col-sm-12 col-xs-12">
-                                <div class="card card-session mb-4 pb-4">
-                                    <div class="card-header card-session-header pb-1">
-                                        <div className="card-session-slot-tutor-details">
-                                            <h6 className="text-uppercase card-session-slotDateStart-text">17-05-2022 </h6>
-                                            <span class="card-session-dot fw-bold">|</span>
-                                            <h6 className="text-uppercase card-session-slotTimeStart-text">08:30</h6>
-                                            <span class="card-session-dot fw-bold">·</span>
-                                            <h6 className="text-uppercase card-session-tutorName-text">Brian Holt</h6>
-                                            <h6 className="text-uppercase card-booking-cost-text">1500 </h6>
-                                            <h6 className="text-uppercase card-booking-rupee-symbol">₹</h6>
-                                        </div>
-
-                                        <h6 className="text-uppercase card-session-header-text">Intro to Web Development</h6>
-                                        <h6 className="text-uppercase text-muted card-session-category-text">High School</h6>
+                                                        <h6 className="text-uppercase card-session-header-text">{item.subject_name}</h6>
+                                                        <h6 className="text-uppercase text-muted card-session-category-text">{item.category_name}</h6>
 
 
-                                    </div>
+                                                    </div>
 
-                                    <div class="card-body px-0 pt-0 pb-0 d-grid">
-                                        <button type="button" class="btn-delete-session btn btm-sm btn-danger pt-2 pb-2">
-                                            Delete Session
-                                        </button>
-                                    </div>
+                                                    <div class="card-body px-0 pt-0 pb-0 d-grid">
+                                                        <button type="button" class="btn-delete-session btn btm-sm btn-danger pt-2 pb-2">
+                                                            Deactivate Session
+                                                        </button>
+                                                    </div>
 
-                                </div>
-                            </div>
+                                                </div>
+                                            </div>
+                                        )))}
+
 
                         </div>
                     </div>

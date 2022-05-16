@@ -148,7 +148,7 @@ router.post("/login", validInfo, async (req, res) => {
     //1. Destructure the req.body  
     
     const { email, password } = req.body;  // Only email and password is required in the login routes.
-
+        let id ="";
 
     //2. Check if the user exists within the database (if not, return error)
 
@@ -172,16 +172,29 @@ router.post("/login", validInfo, async (req, res) => {
 
     //4. If all tests are passed, then we give them a JWT token 
 
+
     const token = jwtGenerator(user.rows[0].user_id);
-
-    res.json({token});
-        
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).send("Server Error");  
+    const user_type = user.rows[0].user_type;
+    const user_id = user.rows[0].user_id;
+    if(user_type === 'tutor'){
+      const tutor = await pool.query("SELECT * FROM tbl_tutor WHERE user_id = $1", [
+        user_id
+      ]);
+      id = tutor.rows[0].tutor_id;
     }
-
+    else if(user_type === 'customer'){
+      const customer = await pool.query("SELECT * FROM tbl_customer WHERE user_id = $1", [
+        user_id
+      ]);
+      id = customer.rows[0].customer_id;
+    }
+    return res.json({ token, user_type, id, user_id });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server error");
+  }
 });
+        
 
 // **************************************************
 

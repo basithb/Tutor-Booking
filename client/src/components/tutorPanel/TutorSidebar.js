@@ -28,6 +28,9 @@ const TutorSidebar = (props, { setAuth }) => {
 
         event.preventDefault();
         localStorage.removeItem("token");
+        localStorage.removeItem("customer_id");
+        localStorage.removeItem("id");
+        localStorage.removeItem("user_type");
         setAuth(false);
         toast.success("Logged Out Successfully", {
             position: toast.POSITION.BOTTOM_RIGHT
@@ -110,7 +113,7 @@ const TutorSidebar = (props, { setAuth }) => {
                             {/* Note: Customer bookings should be specific to that particular tutor */}
                         </li>
 
-
+{/* 
                         <li class="nav-item">
                             {
                                 isActive === "tutor-reports" ?
@@ -120,10 +123,10 @@ const TutorSidebar = (props, { setAuth }) => {
                                     </Link> : <Link to="/tutor-reports" className="nav-link sidebutton link-dark">
                                         Reports
                                     </Link>
-                            }
+                            } */}
 
                             {/* Note: Reports generated for a particular tutor*/}
-                        </li>
+                        {/* </li> */}
 
                     </ul>
 

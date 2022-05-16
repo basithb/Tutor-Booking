@@ -42,61 +42,76 @@ const Login = ({ setAuth }) => {
 
             const parseRes = await response.json(); //parseResponse
 
+
+
             if (parseRes.token) {
                 localStorage.setItem("token", parseRes.token);
 
-                setAuth(true);
-                toast.success("Login Successful!");
-            } else {
-                setAuth(false);
-                toast.error(parseRes);
+                localStorage.setItem("user_type", parseRes.user_type);
+                localStorage.setItem("id", parseRes.user_id);
+                if (parseRes.id) {
+                   if (parseRes.user_type === 'tutor') {
+                        localStorage.setItem("tutor_id", parseRes.id)
+                    }
+                    else {
+
+                        localStorage.setItem("customer_id", parseRes.id)
+                    }
+
+
+                    setAuth(true);
+                    toast.success("Login Successful!");
+                } 
+                
+                else {
+                    setAuth(false);
+                    toast.error(parseRes);
+                }
+
+            } }
+            
+            catch (error) {
+                console.error(error.message);
             }
+        };
 
-            localStorage.setItem("token", parseRes.token);
+        return (
+            <Fragment>
+                <Navbar />
+                <div className="container py-5 h-100 login-container ">
+                    <div className="row d-flex justify-content-center align-items-center h-100">
+                        <div className="col-12-login col-md-8 col-lg-6 col-xl-5">
+                            <div className="card shadow-lg p-3 mb-5 bg-body bg-white text-dark login-card">
+                                <div className="card-body p-4 text-center">
+                                    <h2 className="mb-4 fw-bold">Welcome back!</h2>
 
-            setAuth(true);
-        } catch (error) {
-            console.error(error.message);
-        }
-    };
+                                    <form onSubmit={onSubmitForm}>
+                                        <div className="form-floating mb-4 ">
+                                            <input type="email" name="email" className="form-control input-email" id="floatingEmail" value={email}
+                                                onChange={(event) => onChange(event)} />
+                                            <label for="floatingEmail">Email ID</label>
+                                        </div>
 
-    return (
-        <Fragment>
-            <Navbar />
-            <div className="container py-5 h-100 login-container ">
-                <div className="row d-flex justify-content-center align-items-center h-100">
-                    <div className="col-12-login col-md-8 col-lg-6 col-xl-5">
-                        <div className="card shadow-lg p-3 mb-5 bg-body bg-white text-dark login-card">
-                            <div className="card-body p-4 text-center">
-                                <h2 className="mb-4 fw-bold">Welcome back!</h2>
+                                        <div className="form-floating ">
+                                            <input type="password" name="password" className="form-control input-password" id="floatingPassword" value={password}
+                                                onChange={(event) => onChange(event)} />
+                                            <label for="floatingPassword">Password</label>
+                                        </div>
 
-                                <form onSubmit={onSubmitForm}>
-                                    <div className="form-floating mb-4 ">
-                                        <input type="email" name="email" className="form-control input-email" id="floatingEmail" value={email}
-                                            onChange={(event) => onChange(event)} />
-                                        <label for="floatingEmail">Email ID</label>
-                                    </div>
-
-                                    <div className="form-floating ">
-                                        <input type="password" name="password" className="form-control input-password" id="floatingPassword" value={password}
-                                            onChange={(event) => onChange(event)} />
-                                        <label for="floatingPassword">Password</label>
-                                    </div>
-
-                                    <div className="d-grid">
-                                        <button className="btn btn-primary login-button">Log In</button>
-                                    </div>
-                                </form>
+                                        <div className="d-grid">
+                                            <button className="btn btn-primary login-button">Log In</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                        <div className="text-center mt-4">
-                            <p>Don't have an account? <Link to="/register" className="login-sub-text fw-bold text-success">Find a Tutor</Link> here.</p>
+                            <div className="text-center mt-4">
+                                <p>Don't have an account? <Link to="/register" className="login-sub-text fw-bold text-success">Find a Tutor</Link> here.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </Fragment>
-    );
-};
+            </Fragment>
+        );
+    };
 
-export default Login;
+    export default Login;

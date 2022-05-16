@@ -125,3 +125,16 @@ CREATE TABLE tbl_card (
 
 
 
+-- Creates tbl_payment
+
+CREATE TABLE tbl_payment (
+    payment_id integer NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    booking_id integer NOT NULL,
+    card_id integer NOT NULL,
+    payment_status VARCHAR(10) NOT NULL,
+    payment_date date NOT NULL,
+    FOREIGN KEY (booking_id) REFERENCES tbl_booking(booking_id),
+    FOREIGN KEY (card_id) REFERENCES tbl_card (card_id)
+);
+
+

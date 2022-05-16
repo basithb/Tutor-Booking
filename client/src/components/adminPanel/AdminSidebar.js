@@ -28,6 +28,9 @@ const AdminSidebar = (props, { setAuth }) => {
 
     event.preventDefault();
     localStorage.removeItem("token");
+    localStorage.removeItem("customer_id");
+    localStorage.removeItem("id");
+    localStorage.removeItem("user_type");
     setAuth(false);
     toast.success("Logged Out Successfully", {
       position: toast.POSITION.BOTTOM_RIGHT

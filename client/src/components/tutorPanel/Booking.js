@@ -14,6 +14,43 @@ const TutorBooking = (props, { setAuth }) => {
         console.error(error.message);
     }
 
+    const [booking, setBooking] = useState([]);
+
+
+    function formatDateInput(stringDate) {
+        var curr = new Date(stringDate);
+        curr.setDate(curr.getDate() + 1);
+        var date = curr.toUTCString().substring(5, 17);
+        return date;
+    }
+
+    //getBookingDetails() function to fetch booking details from tbl_booking
+
+    async function getBookingDetails() {
+
+        try {
+
+            const response = await fetch("http://localhost:5000/fetch/admin-booking", {
+                method: "GET",
+                headers: { token: localStorage.token }
+            });
+
+            const parseRes = await response.json();
+
+            setBooking(parseRes);
+
+        } catch (err) {
+
+            console.error(err.message);
+
+        }
+    }
+
+
+    useEffect(() => {
+        getBookingDetails();
+    }, [0]);
+
     const isActive = "tutor-booking";
 
     return (
@@ -37,30 +74,34 @@ const TutorBooking = (props, { setAuth }) => {
                                             <thead>
                                                 <tr>
                                                     <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">Customer Name</th>
-                                                    <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">Session Name</th>
+                                                    <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">Session ID</th>
                                                     <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">Booking Date</th>
-                                                    <th class="text-center text-secondary text-xxs font-weight-bolder opacity-7">Session Price</th>                       
+                                                                         
 
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">Clifford</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">Human Psychology</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <p class="text-xs font-weight-bold mb-0">14-03-22 18:00</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">₹</span>
-                                                        <span class="text-secondary text-xs font-weight-bold">500</span>
-                                                    </td>
+                                            {
+                                                    booking.length === 0 ?
+                                                        (<h4 className="text-align-center w-100 p-5">No Booking Found.</h4>)
+                                                        :
+                                                        (
+                                                            booking.map((item, index) => (
+                                                                <tr key={item.booking_id}>
+                                                                    <td class="align-middle text-center">
+                                                                        <p class="text-xs font-weight-bold mb-0">{item.customer_firstname}</p>
+                                                                    </td>
+                                                                    <td class="align-middle text-center">
+                                                                        <p class="text-xs font-weight-bold mb-0">{item.session_master_id}</p>
+                                                                    </td>
+                                                                    <td class="align-middle text-center">
+                                                                        <p class="text-xs font-weight-bold mb-0">{formatDateInput(item.booking_date)}</p>
+                                                                    </td>
 
-                                                </tr>
 
+                                                                </tr>
+
+)))}
                                             </tbody>
                                         </table>
                                     </div>

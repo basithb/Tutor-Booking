@@ -206,4 +206,30 @@ router.get("/admin-booking", authorization, async(req, res) => {
 
 
 
+// **************************************************
+
+// 5. Customer Name Details Fetch Route 
+
+router.get("/customerName", authorization, async(req, res) => {
+    try {
+
+
+        
+        const fetchCustomerNameDetails = await pool.query("SELECT * FROM tbl_customer ORDER BY customer_id");
+        // const fetchCustomerNameDetails = await pool.query("SELECT * FROM tbl_booking ORDER BY booking_id");
+
+
+        return res.json(fetchCustomerNameDetails.rows);
+        
+
+    } catch (error) {
+
+        console.error(error.message);
+        return res.status(500).json("Server Error!");
+        
+    }
+});
+
+
+
 module.exports = router;

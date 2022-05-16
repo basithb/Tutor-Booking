@@ -34,7 +34,7 @@ const CustomerProfile = ({ setAuth }) => {
 
         try {
 
-            const body = {customerEditFirstName, customerEditLastName, customerEditEmail, customerEditPassword, customerEditStateName, customerEditCityName };
+            const body = { customerEditFirstName, customerEditLastName, customerEditEmail, customerEditPassword, customerEditStateName, customerEditCityName };
 
             // Creating a fetch request 
             const response = await fetch(
@@ -73,11 +73,31 @@ const CustomerProfile = ({ setAuth }) => {
         }
     }
 
+    const [customer, setCustomer] = useState([]);
+
+    async function getCustomerDetails() {
+        try {
+
+            const response = await fetch("http://localhost:5000/fetch/customerName",
+                {
+                    method: "GET",
+                    headers: { token: localStorage.token }
+                });
+
+            const parseRes = await response.json();
+
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     useEffect(() => {
         getName();
+        getCustomerDetails();
     }, []);
 
-    
+
 
     const isActive = "customer-profile";
 
@@ -96,11 +116,21 @@ const CustomerProfile = ({ setAuth }) => {
                                 <div class="col-10">
                                     <div class="hello-text">
                                         <h5 class="hello-customer-heading">
-                                            Hello,
+                                            Hello
                                         </h5>
-                                        <h5 class="hello-heading-customerFirstName fw-bold">
-                                            Cliffy
-                                        </h5>
+
+                                        {/* {
+                                      
+                                                (
+                                                    customer.map((item, index) => (
+
+
+                                                        <h5 class="hello-heading-customerFirstName fw-bold">
+                                                            {item.customer_name}
+                                                        </h5>
+
+                                                    )))} */}
+
                                         <h5 class="hello-heading-wave">
                                             👋
                                         </h5>
